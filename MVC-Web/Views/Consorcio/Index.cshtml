@@ -1,8 +1,33 @@
-﻿
+﻿@model List<Entidades.Consorcio>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Lista de Consorcios</h2>
+
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Ciudad</th>
+        <th>Vencimiento</th>
+        <th colspan="4"></th>
+    </tr>
+    @foreach(var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(m => item.ConsorcioId)
+</td>
+<td>@Html.ActionLink("" + @Html.DisplayFor(m => item.Nombre) + "", "update", "Consorcio", new {id = item.ConsorcioId }, null)</td>
+<td>@Html.DisplayFor(m => item.Ciudad)</td>
+<td>@Html.DisplayFor(m => item.DiaVencimientoExpensas)</td>
+<td>@Html.ActionLink("Ver Unidades", "listarUnidades", "Unidad")</td>
+<td>@Html.ActionLink("Ver Expensas", "listarExpensas", "Expensa")</td>
+<td>@Html.ActionLink("Ver Gastos", "list", "Gasto")</td>
+<td>@Html.ActionLink("Borrar", "delete", "Consorcio")</td>
+</tr>
+    }
+</table>
 

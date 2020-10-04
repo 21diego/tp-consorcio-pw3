@@ -1,0 +1,14 @@
+﻿@model Entidades.Consorcio
+@{
+    ViewBag.Title = "update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Modificar Consorcio</h2>
+
+@using (@Html.BeginForm())
+{
+    @Html.DisplayNameFor(model => Model.Nombre);
+    @Html.TextBoxFor(model => Model.Nombre);
+}
+
