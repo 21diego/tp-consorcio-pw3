@@ -255,7 +255,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_noLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Consorcio\Index.cshtml" />
     <Content Include="Views\Consorcio\update.cshtml" />
@@ -271,6 +271,9 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Expensa\Index.cshtml" />
     <Content Include="Views\Shared\_BaseLayout.cshtml" />
+    <Content Include="Views\Shared\_AnonimoLayout.cshtml" />
+    <Content Include="Views\Shared\_UsuarioLayout.cshtml" />
+    <Content Include="Views\Shared\_pwFooter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
