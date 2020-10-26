@@ -123,6 +123,7 @@
     <Compile Include="Controllers\ConsorcioController.cs" />
     <Compile Include="Controllers\ExpensaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UnidadController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -274,6 +275,9 @@
     <Content Include="Views\Shared\_AnonimoLayout.cshtml" />
     <Content Include="Views\Shared\_UsuarioLayout.cshtml" />
     <Content Include="Views\Shared\_pwFooter.cshtml" />
+    <Content Include="Views\Unidad\Index.cshtml" />
+    <Content Include="Views\Unidad\Crear.cshtml" />
+    <Content Include="Views\Unidad\Modificar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
