@@ -12,30 +12,18 @@ namespace Entidades
     using System;
     using System.Collections.Generic;
     
-    public partial class Consorcio
+    public partial class TipoGasto
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Consorcio()
+        public TipoGasto()
         {
             this.Gasto = new HashSet<Gasto>();
-            this.Unidad = new HashSet<Unidad>();
         }
     
-        public int IdConsorcio { get; set; }
+        public int IdTipoGasto { get; set; }
         public string Nombre { get; set; }
-        public int IdProvincia { get; set; }
-        public string Ciudad { get; set; }
-        public string Calle { get; set; }
-        public int Altura { get; set; }
-        public int DiaVencimientoExpensas { get; set; }
-        public System.DateTime FechaCreacion { get; set; }
-        public Nullable<int> IdUsuarioCreador { get; set; }
     
-        public virtual Provincia Provincia { get; set; }
-        public virtual Usuario Usuario { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Gasto> Gasto { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Unidad> Unidad { get; set; }
     }
 }

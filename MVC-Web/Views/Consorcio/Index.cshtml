@@ -8,25 +8,24 @@
 
 <table class="table">
     <tr>
-        <th>Id</th>
         <th>Nombre</th>
+        <th>Provincia</th>
         <th>Ciudad</th>
-        <th>Vencimiento</th>
-        <th colspan="4"></th>
+        <th>Unidades</th>
+        <th>Expensas</th>
+        <th>Gastos</th>
+        <th>Eliminar</th>
     </tr>
-    @foreach(var item in Model)
+    @foreach (var item in Model)
     {
 <tr>
-    <td>
-        @Html.DisplayFor(m => item.ConsorcioId)
-</td>
-<td>@Html.ActionLink("" + @Html.DisplayFor(m => item.Nombre) + "", "update", "Consorcio", new {id = item.ConsorcioId }, null)</td>
-<td>@Html.DisplayFor(m => item.Ciudad)</td>
-<td>@Html.DisplayFor(m => item.DiaVencimientoExpensas)</td>
-<td>@Html.ActionLink("Ver Unidades", "listarUnidades", "Unidad")</td>
-<td>@Html.ActionLink("Ver Expensas", "listarExpensas", "Expensa")</td>
-<td>@Html.ActionLink("Ver Gastos", "list", "Gasto")</td>
-<td>@Html.ActionLink("Borrar", "delete", "Consorcio")</td>
+    <td>@Html.ActionLink("" + @Html.DisplayFor(m => item.Nombre) + "", "update", "Consorcio", new { id = item.IdConsorcio }, null)</td>
+    <td>@Html.DisplayFor(m => item.Provincia.Nombre)</td>
+    <td>@Html.DisplayFor(m => item.Ciudad)</td>
+    <td>@Html.ActionLink("Ver Unidades", "listarUnidades", "Unidad", new { id = item.IdConsorcio }, null)</td>
+    <td>@Html.ActionLink("Ver Expensas", "listarExpensas", "Expensa", new { id = item.IdConsorcio }, null)</td>
+    <td>@Html.ActionLink("Ver Gastos", "list", "Gasto", new { id = item.IdConsorcio }, null)</td>
+    <td>@Html.ActionLink("Borrar", "delete", "Consorcio", new { id = item.IdConsorcio }, null)</td>
 </tr>
     }
 </table>
