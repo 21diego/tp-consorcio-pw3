@@ -3,15 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DAL;
+using Servicios;
 
 namespace MVC_Web.Controllers
 {
     public class UnidadController : Controller
     {
-        // GET: Unidad
-        public ActionResult Index()
+        UnidadServicio uniServi;
+
+        public UnidadController()
         {
-            return View();
+            ConsorcioCtx ctx = new ConsorcioCtx();
+            uniServi = new UnidadServicio(ctx);
+        }
+        public ActionResult Lista()
+        {
+            List<Unidad> unidades = uniServi.ObtenerTodos();
+            return View(unidades);
         }
 
         public ActionResult Crear()

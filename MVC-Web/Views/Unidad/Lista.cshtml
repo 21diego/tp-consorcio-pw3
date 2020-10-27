@@ -1,4 +1,4 @@
-﻿
+﻿@model  List<DAL.Unidad>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_UsuarioLayout.cshtml";
@@ -28,13 +28,17 @@
             <th>Email</th>
             <th>Eliminar</th>
         </tr>
-        <tr>
-            <td>1A</td>
-            <td>Sanchez</td>
-            <td>Alberto</td>
-            <td>u1a@prueba.com</td>
-            <td><a href="#">Eliminar</a></td>
-        </tr>
+        @foreach (var u in Model)
+        {
+            <tr>
+                <td>@u.Nombre</td>
+                <td>@u.ApellidoPropietario</td>
+                <td>@u.NombrePropietario</td>
+                <td>@u.EmailPropietario</td>
+                <td><a href="#">Eliminar</a></td>
+            </tr>
+        }
+
     </table>
 </section>
 <section>
