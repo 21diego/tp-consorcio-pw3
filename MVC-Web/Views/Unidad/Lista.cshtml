@@ -16,53 +16,34 @@
     </div>
 </header>
 <section class="text-right">
-    <button type="button" class="btn btn-primary">Nueva Unidad</button>
+    @Html.ActionLink("Nueva Unidad", "Crear", "Unidad", new { area = "" },new { @class = "btn btn-primary" })
     <hr />
 </section>
 <section>
-    <table class="table">
-        <tr class="table-danger">
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Nombre</th>
-            <th>Email</th>
-            <th>Eliminar</th>
-        </tr>
-        @foreach (var u in Model)
-        {
+    <table id="listaUnidades" class="table display" style="width:100%">
+        <thead>
             <tr>
-                <td>@u.Nombre</td>
-                <td>@u.ApellidoPropietario</td>
-                <td>@u.NombrePropietario</td>
-                <td>@u.EmailPropietario</td>
-                <td><a href="#">Eliminar</a></td>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Eliminar</th>
             </tr>
-        }
-
+        </thead>
+        <tbody>
+            @foreach (var u in Model)
+            {
+                <tr>
+                    <td>@u.Nombre</td>
+                    <td>@u.ApellidoPropietario</td>
+                    <td>@u.NombrePropietario</td>
+                    <td>@u.EmailPropietario</td>
+                    <td><a href="#">Eliminar</a></td>
+                </tr>
+            }
+            
+        </tbody>
+        <tfoot>
+        </tfoot>
     </table>
-</section>
-<section>
-    <ul class="pagination">
-        <li class="page-item disabled">
-            <a class="page-link" href="#">&laquo;</a>
-        </li>
-        <li class="page-item active">
-            <a class="page-link" href="#">1</a>
-        </li>
-        <li class="page-item">
-            <a class="page-link" href="#">2</a>
-        </li>
-        <li class="page-item">
-            <a class="page-link" href="#">3</a>
-        </li>
-        <li class="page-item">
-            <a class="page-link" href="#">4</a>
-        </li>
-        <li class="page-item">
-            <a class="page-link" href="#">5</a>
-        </li>
-        <li class="page-item">
-            <a class="page-link" href="#">&raquo;</a>
-        </li>
-    </ul>
 </section>
