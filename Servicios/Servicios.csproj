@@ -48,7 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ServicioConsorcio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnidadServicio.cs" />
   </ItemGroup>
@@ -56,10 +55,6 @@
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{1d4f649b-f855-4927-b450-9713bf013b5e}</Project>
       <Name>DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Entidades\Entidades.csproj">
-      <Project>{0810de5d-9ba9-4527-ba1d-a2820566782c}</Project>
-      <Name>Entidades</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
