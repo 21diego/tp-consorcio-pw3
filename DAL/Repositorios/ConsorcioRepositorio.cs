@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entidades.repositorios
+namespace DAL
 {
     public class ConsorcioRepositorio
     {
@@ -31,6 +31,7 @@ namespace Entidades.repositorios
         public void eliminarConsorcio(Consorcio consorcio)
         {
             context.Consorcios.Remove(consorcio);
+            context.SaveChanges();
         }
 
         public Consorcio obtenerConsorcio(int idConsorcio)

@@ -5,7 +5,7 @@
 }
 
 <h2>Lista de Consorcios</h2>
-
+<p>@Html.ActionLink("Nuevo consorcio","create","Consorcio",null,null)</p>
 <table class="table">
     <tr>
         <th>Nombre</th>
@@ -19,13 +19,13 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>@Html.ActionLink("" + @Html.DisplayFor(m => item.Nombre) + "", "update", "Consorcio", new { id = item.IdConsorcio }, null)</td>
+            <td>@Html.ActionLink("" + @Html.DisplayFor(m => item.Nombre) + "", "update", "Consorcio", new { idConsorcio = item.IdConsorcio }, null)</td>
             <td>@Html.DisplayFor(m => item.Provincia.Nombre)</td>
             <td>@Html.DisplayFor(m => item.Ciudad)</td>
-            <td>@Html.ActionLink("Ver Unidades", "listarUnidades", "Unidad", new { id = item.IdConsorcio }, null)</td>
-            <td>@Html.ActionLink("Ver Expensas", "listarExpensas", "Expensa", new { id = item.IdConsorcio }, null)</td>
-            <td>@Html.ActionLink("Ver Gastos", "list", "Gasto", new { id = item.IdConsorcio }, null)</td>
-            <td>@Html.ActionLink("Borrar", "delete", "Consorcio", new { id = item.IdConsorcio }, null)</td>
+            <td>@Html.ActionLink("Ver Unidades", "lista", "Unidad", new { idConsorcio = item.IdConsorcio })</td>
+            <td>@Html.ActionLink("Ver Expensas", "listarExpensas", "Expensa", new { idConsorcio = item.IdConsorcio }, null)</td>
+            <td>@Html.ActionLink("Ver Gastos", "list", "Gasto", new { idConsorcio = item.IdConsorcio }, null)</td>
+            <td>@Html.ActionLink("Borrar", "delete", "Consorcio", new { idConsorcio = item.IdConsorcio }, null)</td>
         </tr>
     }
 </table>
