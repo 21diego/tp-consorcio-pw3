@@ -50,7 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Consorcio.cs">
       <DependentUpon>ConsorcioDB.tt</DependentUpon>
     </Compile>
