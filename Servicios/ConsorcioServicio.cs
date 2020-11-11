@@ -9,11 +9,11 @@ namespace Servicios
 {
     public class ConsorcioServicio
     {
-        Entidades.repositorios.ConsorcioRepositorio repositorio;
+       ConsorcioRepositorio repositorio;
 
         public ConsorcioServicio(ConsorcioCtx contexto)
         {
-            repositorio = new Entidades.repositorios.ConsorcioRepositorio(contexto);
+            repositorio = new DAL.ConsorcioRepositorio(contexto);
         }
 
         public List<Consorcio> listarConsorcios()
@@ -23,6 +23,8 @@ namespace Servicios
 
         public void guardarConsorcio(Consorcio consorcio)
         {
+            DateTime now = DateTime.Now;
+            consorcio.FechaCreacion = now;
             repositorio.guardarConsorcio(consorcio);
         }
 

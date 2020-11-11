@@ -10,27 +10,68 @@ namespace MVC_Web.Controllers
 {
     public class ConsorcioController : Controller
     {
-        ConsorcioServicio servicio;
+        ConsorcioServicio servicioConsorcio;
+        ProvinciaServicio servicioProvincia;
 
         public ConsorcioController()
         {
             ConsorcioCtx context = new ConsorcioCtx();
-            servicio = new ConsorcioServicio(context);
+            servicioConsorcio = new ConsorcioServicio(context);
+            servicioProvincia = new ProvinciaServicio(context);
         }
 
         // GET: Consorcio
         public ActionResult Index()
         {
             // nostrar lista consorcios
-            List<Consorcio> consorcios = servicio.listarConsorcios();
+            List<Consorcio> consorcios = servicioConsorcio.listarConsorcios();
 
-            return View(consorcios);
+            return View("Index", consorcios);
         }
 
-        public ActionResult update(int id)
+        [HttpGet]
+        public ActionResult create()
         {
+            List<Provincia> provincias = servicioProvincia.listarProvincias();
+
+            ViewBag.provincias = provincias;
 
             return View();
+        }
+        [HttpPost]
+        public ActionResult create(Consorcio consorcio)
+        {
+
+            servicioConsorcio.guardarConsorcio(consorcio);
+
+            return Redirect("Index");
+        }
+        [HttpGet]
+        public ActionResult delete(int idConsorcio)
+        {
+
+            servicioConsorcio.eliminarConsorcio(idConsorcio);
+
+            return Redirect("Index");
+        }
+
+        [HttpGet]
+        public ActionResult update(int idConsorcio)
+        {
+            Consorcio consorcio = servicioConsorcio.obtenerConsorcio(idConsorcio);
+            List<Provincia> provincias = servicioProvincia.listarProvincias();
+
+            ViewBag.provincias = provincias;
+
+            return View(consorcio);
+        }
+
+        [HttpPost]
+        public ActionResult update(Consorcio consorcio)
+        {
+            servicioConsorcio.editarConsorcio(consorcio);
+
+            return Redirect("Index");
         }
     }
 }
