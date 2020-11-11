@@ -18,7 +18,7 @@ namespace Servicios
 
         public List<Gasto> listarGastos(int idConsorcio)
         {
-            return repositorio.listarGastos(int idCosnorcio);
+            return repositorio.listarGastos(idConsorcio);
         }
 
         public void guardarGasto(Gasto gasto)
