@@ -9,11 +9,11 @@ namespace Servicios
 {
     public class ConsorcioServicio
     {
-        Entidades.repositorios.ConsorcioRepositorio repositorio;
+        DAL.Repositorios.ConsorcioRepositorio repositorio;
 
         public ConsorcioServicio(ConsorcioCtx contexto)
         {
-            repositorio = new Entidades.repositorios.ConsorcioRepositorio(contexto);
+            repositorio = new DAL.Repositorios.ConsorcioRepositorio(contexto);
         }
 
         public List<Consorcio> listarConsorcios()

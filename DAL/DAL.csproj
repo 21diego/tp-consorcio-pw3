@@ -77,6 +77,7 @@
       <DependentUpon>ConsorcioDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Repositorios\ConsorcioRepositorio.cs" />
+    <Compile Include="Repositorios\GastoRepositorio.cs" />
     <Compile Include="TipoGasto.cs">
       <DependentUpon>ConsorcioDB.tt</DependentUpon>
     </Compile>
