@@ -285,6 +285,7 @@
     <Content Include="Views\Unidad\Lista.cshtml" />
     <Content Include="Views\Unidad\Crear.cshtml" />
     <Content Include="Views\Unidad\Modificar.cshtml" />
+    <Content Include="Views\Consorcio\create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
