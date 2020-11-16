@@ -79,6 +79,7 @@
     <Compile Include="Repositorios\ConsorcioRepositorio.cs" />
     <Compile Include="Repositorios\GastoRepositorio.cs" />
     <Compile Include="Repositorios\ProvinciaRepositorio.cs" />
+    <Compile Include="Repositorios\TipoGastoRepositorio.cs" />
     <Compile Include="TipoGasto.cs">
       <DependentUpon>ConsorcioDB.tt</DependentUpon>
     </Compile>

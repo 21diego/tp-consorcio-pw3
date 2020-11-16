@@ -286,11 +286,13 @@
     <Content Include="Views\Unidad\Crear.cshtml" />
     <Content Include="Views\Unidad\Modificar.cshtml" />
     <Content Include="Views\Consorcio\create.cshtml" />
+    <Content Include="Views\Gasto\Lista.cshtml" />
+    <Content Include="Views\Gasto\Create.cshtml" />
+    <Content Include="Views\Gasto\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Gasto\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,0 +1,51 @@
+﻿@model DAL.Gasto
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_UsuarioLayout.cshtml";
+}
+
+<h2>Nuevo Gasto</h2>
+
+@using (@Html.BeginForm())
+{
+    <div>
+        @Html.DisplayName("Consorcio")
+        @Html.TextBox("consorcioNombre", (string)ViewBag.consorcio.Nombre, new { @disabled = "true" })
+        @Html.TextBox("IdConsorcio", (int)ViewBag.consorcio.IdConsorcio, new { @type = "hidden" })
+    </div>
+    <div>
+        @Html.DisplayName("TipoGasto")
+        @Html.DropDownListFor(model => Model.IdTipoGasto, new SelectList(ViewBag.tiposGastos, "IdTipoGasto", "Nombre"))
+    </div>
+    <div>
+        @Html.DisplayName("Nombre")
+        @Html.TextBox("Nombre")
+    </div>
+    <div>
+        @Html.DisplayName("Descripcion")
+        @Html.TextArea("Descripcion")
+    </div>
+    <div>
+        @Html.DisplayName("Fecha")
+        @Html.TextBox("FechaGasto", null, new { @type = "Date" })
+    </div>
+    <div>
+        @Html.DisplayName("Año Expensa")
+        @Html.TextBox("AnioExpensa", null, new { @type = "Number" })
+    </div>
+    <div>
+        @Html.DisplayName("Mes Expensa")
+        @Html.TextBox("MesExpensa", null, new { @type = "Number" })
+    </div>
+    <div>
+        @Html.DisplayName("Comprobante")
+        @Html.TextBox("ArchivoComprobante", null, new { @type = "File" })
+    </div>
+    <div>
+        @Html.DisplayName("Monto")
+        @Html.TextBox("Monto", null, new { @type = "Number" })
+    </div>
+    <button type="submit">Guardar</button>
+    <p>@Html.ActionLink("Cancelar", "Lista", "Gasto", new { idConsorcio = ViewBag.consorcio.IdConsorcio }, new { @class = "btn-sm btn-danger" })</p>
+}
+

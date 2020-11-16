@@ -18,7 +18,7 @@ namespace DAL.Repositorios
 
         public List<Gasto> listarGastos(int idConsorcio)
         {
-            return context.Gastoes.ToList();
+            return context.Gastoes.Where(gasto => gasto.IdConsorcio == idConsorcio).ToList();
         }
 
         public void guardarGasto(Gasto gasto)

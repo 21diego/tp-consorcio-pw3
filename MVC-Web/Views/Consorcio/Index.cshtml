@@ -24,7 +24,7 @@
             <td>@Html.DisplayFor(m => item.Ciudad)</td>
             <td>@Html.ActionLink("Ver Unidades", "lista", "Unidad", new { @idConsorcio = item.IdConsorcio }, null)</td>
             <td>@Html.ActionLink("Ver Expensas", "listarExpensas", "Expensa", new { idConsorcio = item.IdConsorcio }, null)</td>
-            <td>@Html.ActionLink("Ver Gastos", "list", "Gasto", new { idConsorcio = item.IdConsorcio }, null)</td>
+            <td>@Html.ActionLink("Ver Gastos", "lista", "Gasto", new { idConsorcio = item.IdConsorcio }, null)</td>
             <td>@Html.ActionLink("Borrar", "delete", "Consorcio", new { idConsorcio = item.IdConsorcio }, null)</td>
         </tr>
     }

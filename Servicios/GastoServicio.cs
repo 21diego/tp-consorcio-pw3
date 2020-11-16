@@ -10,12 +10,17 @@ namespace Servicios
     public class GastoServicio
     {
         DAL.Repositorios.GastoRepositorio repositorio;
+        DAL.Repositorios.TipoGastoRepositorio TGRepo;
 
         public GastoServicio(ConsorcioCtx contexto)
         {
             repositorio = new DAL.Repositorios.GastoRepositorio(contexto);
+            TGRepo = new DAL.Repositorios.TipoGastoRepositorio(contexto);
         }
-
+        public List<TipoGasto> ObtenerTiposGastos()
+        {
+            return TGRepo.ObtenerTiposGastos();
+        }
         public List<Gasto> listarGastos(int idConsorcio)
         {
             return repositorio.listarGastos(idConsorcio);
@@ -45,7 +50,10 @@ namespace Servicios
             }
 
         }
-
+        public void editarGasto(Gasto gasto)
+        {
+            repositorio.editarGasto(gasto);
+        }
     }
 
 }
