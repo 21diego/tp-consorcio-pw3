@@ -25,6 +25,7 @@ namespace MVC_Web.Controllers
 
         public ActionResult Crear()
         {
+            Console.WriteLine("hol");
             return View();
         }
 
