@@ -1,4 +1,4 @@
-﻿
+﻿@model DAL.Unidad
 @{
     ViewBag.Title = "Modificar";
     Layout = "~/Views/Shared/_UsuarioLayout.cshtml";
@@ -20,37 +20,51 @@
         <div class="col">
         </div>
         <div class="col-6">
-            <form>
+            <form action="/Unidad/Modificar" method="post">
                 <fieldset>
-                    @*<input type="hidden" name="Id" value="@Model.Id" />*@
+                    <div class="d-none">
+                        <input type="text" class="form-control" id="IdConsorcio" name="IdConsorcio" value="@Model.IdConsorcio">
+                    </div>
                     <div class="form-group row">
                         <label for="staticConsorcio" class="col-sm-2 col-form-label">Consorcio</label>
                         <div class="col-sm-10">
-                            <input type="text" readonly="" class="form-control-plaintext" id="staticEmail" value="Nombre Consorcio">
+                            <input type="text" readonly="" class="form-control-plaintext" id="staticConsorcio" value="@ViewBag.NombreConsorcio">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputNombre">Nombre (*)</label>
-                        <input type="text" class="form-control" id="inputNombre" placeholder="Nombre">
+                        <label for="Nombre">Nombre (*)</label>
+                        @Html.ValidationMessageFor(Model => Model.Nombre)
+                        <input type="text" class="form-control" id="Nombre" name="Nombre" value="@Model.Nombre">
                     </div>
                     <div class="form-group">
-                        <label for="inputNombrePropietario">Nombre Propietario (*)</label>
-                        <input type="text" class="form-control" id="inputNombrePropietario" placeholder="Nombre Propietario">
+                        <label for="NombrePropietario">Nombre Propietario (*)</label>
+                        @Html.ValidationMessageFor(Model => Model.NombrePropietario)
+                        <input type="text" class="form-control" id="NombrePropietario" name="NombrePropietario" value="@Model.NombrePropietario">
                     </div>
                     <div class="form-group">
-                        <label for="inputApellidoPropietario">Apellido Propietario (*)</label>
-                        <input type="text" class="form-control" id="inputApellidoPropietario" placeholder="Apellido Propietario">
+                        <label for="ApellidoPropietario">Apellido Propietario (*)</label>
+                        @Html.ValidationMessageFor(Model => Model.ApellidoPropietario)
+                        <input type="text" class="form-control" id="ApellidoPropietario" name="ApellidoPropietario" value="@Model.ApellidoPropietario">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email Propietario (*)</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        <label for="EmailPropietario">Email Propietario (*)</label>
+                        @Html.ValidationMessageFor(Model => Model.EmailPropietario)
+                        <input type="email" class="form-control" id="EmailPropietario" name="EmailPropietario" aria-describedby="emailHelp" value="@Model.EmailPropietario">
                     </div>
                     <div class="form-group">
-                        <label for="inputSuperficie">Sufercifie (*)</label>
-                        <input type="text" class="form-control" id="inputSuperficie" placeholder="Superficie">
+                        <label for="Superficie">Superficie (*)</label>
+                        @Html.ValidationMessageFor(Model => Model.Superficie)
+                        <input type="text" class="form-control" id="Superficie" name="Superficie" value="@Model.Superficie">
                     </div>
+                    <div class="form-group">
+                        <input type="datetime-local" class="form-control" id="FechaCreacion" name="FechaCreacion" value="@Model.FechaCreacion">
+                    </div>
+                    <div class="d-none">
+                        <input type="text" class="form-control" id="IdUsuarioCreador" name="IdUsuarioCreador" value="1">
+                    </div>
+
                     <button type="submit" class="btn btn-primary">Guardar</button>
-                    <button type="submit" class="btn btn-primary">Cancelar</button>
+                    <a href="/Unidad/Lista/@Model.IdConsorcio" class="btn btn-primary">Cancelar</a>
                 </fieldset>
             </form>
         </div>

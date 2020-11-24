@@ -15,7 +15,7 @@ namespace DAL
             ctx = contexto;
         }
 
-        public  void Alta(Unidad u)
+        public  void Crear(Unidad u)
         {
             ctx.Unidads.Add(u);
             ctx.SaveChanges();
@@ -26,11 +26,20 @@ namespace DAL
             return ctx.Unidads.ToList();
         }
 
-        public Unidad ObtenerPorId(int idUnidad)
+        public Unidad ObtenerPorId(int IdUnidad)
         {
             Unidad u;
-            u = ctx.Unidads.Find(idUnidad);
+            u = ctx.Unidads.Find(IdUnidad);
             return u;
+        }
+
+        public List<Unidad> ObtenerTodosPorId(int IdConsorcio)
+        {
+            var unidades = (from u in ctx.Unidads
+                            where u.IdConsorcio == IdConsorcio
+                            select u).ToList();
+
+            return unidades;
         }
 
         public void Eliminar(int idUnidad)
