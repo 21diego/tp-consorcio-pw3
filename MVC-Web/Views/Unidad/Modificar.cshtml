@@ -56,7 +56,7 @@
                         @Html.ValidationMessageFor(Model => Model.Superficie)
                         <input type="text" class="form-control" id="Superficie" name="Superficie" value="@Model.Superficie">
                     </div>
-                    <div class="form-group">
+                    <div class="d-none">
                         <input type="datetime-local" class="form-control" id="FechaCreacion" name="FechaCreacion" value="@Model.FechaCreacion">
                     </div>
                     <div class="d-none">
@@ -69,7 +69,7 @@
             </form>
         </div>
         <div class="col">
-            <button type="submit" class="btn btn-primary">Eliminiar</button>
+            <button type="submit" class="btn btn-primary">Eliminar</button>
         </div>
     </div>
 </section>

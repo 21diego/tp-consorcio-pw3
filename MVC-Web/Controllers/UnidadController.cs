@@ -45,19 +45,27 @@ namespace MVC_Web.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View();
+                return View("Crear");
                 //return Redirect("/Unidad/Crear/" + u.IdConsorcio);
             }
-
-            //if (idConsorcio != null)
-            //{
-            //    uniServi.Crear(u);
-            //    return Redirect("/unidad/lista/" + u.IdConsorcio);
-            //}
 
             uniServi.Crear(u);
             return Redirect("/Unidad/Lista/" + u.IdConsorcio);
             
+        }
+
+        [HttpPost]
+        public ActionResult CrearYOtra(Unidad u, int Id)
+        {
+            if (!ModelState.IsValid)
+            {
+                //return View();
+                return Redirect("/Unidad/Crear/" + Id);
+            }
+
+            uniServi.Crear(u);
+            return Redirect("/Unidad/Crear/" + Id);
+
         }
 
         public ActionResult Modificar(int Id, int IdUnidad)
@@ -69,7 +77,7 @@ namespace MVC_Web.Controllers
 
             if (u == null)
             {
-                TempData["Message"] = "El producto elegido no existe";
+                TempData["Message"] = "La unidad elegida no existe";
                 return Redirect("/unidad/lista/"+Id);
             }
             return View(u);
