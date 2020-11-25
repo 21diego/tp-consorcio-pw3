@@ -1,0 +1,33 @@
+﻿@model List<DAL.Gasto>
+@{
+    ViewBag.Title = "Lista";
+    Layout = "~/Views/Shared/_UsuarioLayout.cshtml";
+}
+
+<h2>Lista de Gastos - @ViewBag.consorcio.Nombre</h2>
+<p>@Html.ActionLink("Nuevo gasto", "create", "Gasto", new { idConsorcio = ViewBag.consorcio.IdConsorcio}, new { @class = "btn-sm btn-info"})</p>
+<table class="table">
+    <tr>
+        <th>Año</th>
+        <th>Mes</th>
+        <th>Nombre</th>
+        <th>Tipo</th>
+        <th>Fecha</th>
+        <th>Monto</th>
+        <th>Comprobante</th>
+        <th>Eliminar</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(m => item.AnioExpensa)</td>
+            <td>@Html.DisplayFor(m => item.MesExpensa)</td>
+            <td>@Html.ActionLink("" + @Html.DisplayFor(m => item.Nombre) + "", "update", "Gasto", new { idGasto = item.IdGasto }, null)</td>
+            <td>@Html.DisplayFor(m => item.TipoGasto.Nombre)</td>
+            <td>@Html.DisplayFor(m => item.FechaGasto)</td>
+            <td>@Html.DisplayFor(m => item.Monto)</td>
+            <td>@Html.ActionLink("Descargar comprobante", "DescargarComprobante", "Gasto", new { idGasto = item.IdGasto }, null)</td>
+            <td>@Html.ActionLink("Borrar", "delete", "Consorcio", new { idGasto = item.IdGasto }, null)</td>
+        </tr>
+    }
+</table>

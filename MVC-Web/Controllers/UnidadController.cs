@@ -17,7 +17,7 @@ namespace MVC_Web.Controllers
             ConsorcioCtx ctx = new ConsorcioCtx();
             uniServi = new UnidadServicio(ctx);
         }
-        public ActionResult Lista(int id)
+        public ActionResult Lista(int idConsorcio)
         {
             List<Unidad> unidades = uniServi.ObtenerTodos();
             return View(unidades);
@@ -25,6 +25,7 @@ namespace MVC_Web.Controllers
 
         public ActionResult Crear()
         {
+            Console.WriteLine("hol");
             return View();
         }
 
