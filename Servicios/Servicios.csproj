@@ -54,6 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProvinciaServicio.cs" />
     <Compile Include="UnidadServicio.cs" />
+    <Compile Include="UsuarioServicio.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">
