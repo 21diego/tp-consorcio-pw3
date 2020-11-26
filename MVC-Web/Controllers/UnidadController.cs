@@ -4,10 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DAL;
+using MVC_Web.Tags;
 using Servicios;
 
 namespace MVC_Web.Controllers
 {
+    [Autenticado]
     public class UnidadController : Controller
     {
         UnidadServicio uniServi;

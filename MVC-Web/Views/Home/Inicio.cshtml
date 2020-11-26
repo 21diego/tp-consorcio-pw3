@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_AnonimoLayout.cshtml";
+}
+
+<div class="jumbotron">
+    <h2>Sistema para la Administracion de Consorcios</h2>
+    @Html.ActionLink("Ingresar", "Ingreso", "Home", null, new { @class = "btn btn-primary btn-lg" })
+    @Html.ActionLink("Registrarse", "Registro", "Home", null, new { @class = "btn btn-primary btn-lg" })
+</div>

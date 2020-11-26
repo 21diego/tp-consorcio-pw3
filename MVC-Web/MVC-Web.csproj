@@ -135,6 +135,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tags\AutenticadoAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -264,7 +265,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_noLayout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Inicio.cshtml" />
     <Content Include="Views\Consorcio\Index.cshtml" />
     <Content Include="Views\Consorcio\update.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
@@ -289,6 +290,8 @@
     <Content Include="Views\Gasto\Lista.cshtml" />
     <Content Include="Views\Gasto\Create.cshtml" />
     <Content Include="Views\Gasto\Update.cshtml" />
+    <Content Include="Views\Home\Ingreso.cshtml" />
+    <Content Include="Views\Home\Registro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
