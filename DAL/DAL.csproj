@@ -92,6 +92,8 @@
     <Compile Include="Usuario.cs">
       <DependentUpon>ConsorcioDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Validaciones\Unidad.cs" />
+    <Compile Include="Validaciones\UnidadMetadata.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="ConsorcioDB.edmx">

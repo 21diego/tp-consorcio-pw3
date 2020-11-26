@@ -16,14 +16,19 @@ namespace Servicios
             repo = new DAL.UnidadRepositorio(ctx);
         }
 
-        public void Alta(Unidad u)
+        public void Crear(Unidad u)
         {
-            repo.Alta(u);
+            repo.Crear(u);
         }
 
         public List<Unidad> ObtenerTodos()
         {
             return repo.ObtenerTodos();
+        }
+
+        public List<Unidad> ObtenerTodosPorId(int IdConsorcio)
+        {
+            return repo.ObtenerTodosPorId(IdConsorcio); ;
         }
 
         public Unidad ObtenerPorId(int idUnidad)

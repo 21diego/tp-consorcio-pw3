@@ -1,9 +1,12 @@
 ﻿
 @{
-    ViewBag.Title = "_UsuarioLayout";
     Layout = "~/Views/Shared/_BaseLayout.cshtml";
 }
-
+@Scripts.Render("~/js/DataTables/js")
+@Styles.Render("~/js/DataTables/css")
+@Scripts.Render("~/js")
+@Scripts.Render("~/bundles/jqueryval")
+@RenderSection("scripts", required: false)
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         @Html.ActionLink("S.A.C", "Index", "Consorcio", new { area = "" }, new { @class = "navbar-brand" })
