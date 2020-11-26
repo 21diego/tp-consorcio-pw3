@@ -1,4 +1,5 @@
 ﻿using DAL;
+using MVC_Web.Tags;
 using Servicios;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace MVC_Web.Controllers
 {
+    [NoLogin]
     public class HomeController : Controller
     {
         UsuarioServicio usuarioServicio;
@@ -16,7 +18,6 @@ namespace MVC_Web.Controllers
         {
             ConsorcioCtx context = new ConsorcioCtx();
             usuarioServicio = new UsuarioServicio(context);
-
         }
 
         public ActionResult Inicio()
@@ -59,6 +60,12 @@ namespace MVC_Web.Controllers
             {
                 return View("Registro");
             }
+        }
+
+        public ActionResult Salir()
+        {
+            usuarioServicio.desloguearUsuario();
+            return Redirect("Inicio");
         }
     }
 }

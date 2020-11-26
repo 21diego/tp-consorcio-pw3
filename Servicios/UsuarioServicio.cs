@@ -1,4 +1,5 @@
 ﻿using DAL;
+using Servicios.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +40,7 @@ namespace Servicios
 
             if (usuarioObtenido.Password == usuario.Password)
             {
+                SessionHelper.AgregarUsuarioSession(usuarioObtenido.IdUsuario);
                 usuarioObtenido.FechaUltLogin = System.DateTime.Now;
                 usuarioRepositorio.modificarUsuario(usuarioObtenido);
                 return true;
@@ -52,7 +54,7 @@ namespace Servicios
 
         public void desloguearUsuario()
         {
-
+            SessionHelper.DestruirSession();
         }
 
         
