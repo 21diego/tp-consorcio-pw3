@@ -14,7 +14,7 @@ namespace DAL
         [Required]
         [EmailAddress(ErrorMessage = "Ingrese un correo electrónico valido")]
         public string EmailPropietario { get; set; }
-        [RegularExpression(@"/^[0-9]+$/", ErrorMessage = "Ingrese un número entero")]
+        [RegularExpression("^[0-9]+$", ErrorMessage = "Ingrese un número entero")]
         public Nullable<int> Superficie { get; set; }
     }
 }

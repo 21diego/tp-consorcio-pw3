@@ -55,11 +55,12 @@ namespace DAL
         public void Modificar(Unidad u)
         {
             Unidad uniActual = ObtenerPorId(u.IdUnidad);
-            uniActual.IdConsorcio = u.IdConsorcio;
-            uniActual.IdUnidad = u.IdUnidad;
             uniActual.Nombre = u.Nombre;
             uniActual.NombrePropietario = u.NombrePropietario;
+            uniActual.ApellidoPropietario = u.ApellidoPropietario;
+            uniActual.EmailPropietario = u.EmailPropietario;
             uniActual.Superficie = u.Superficie;
+            ctx.SaveChanges();
         } 
     }
 }

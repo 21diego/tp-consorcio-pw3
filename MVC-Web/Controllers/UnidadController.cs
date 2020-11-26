@@ -41,14 +41,18 @@ namespace MVC_Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Crear(Unidad u)
+        public ActionResult Crear(Unidad u, int Id)
         {
+            ViewBag.IdConsorcio = u.IdConsorcio;
+            var consorcio = consorServi.obtenerConsorcio(u.IdConsorcio);
+            ViewBag.NombreConsorcio = consorcio.Nombre;
+            ViewBag.FechaCreacion = DateTime.Now.ToString();
+
             if (!ModelState.IsValid)
             {
-                return View("Crear");
+                return View();
                 //return Redirect("/Unidad/Crear/" + u.IdConsorcio);
             }
-
             uniServi.Crear(u);
             return Redirect("/Unidad/Lista/" + u.IdConsorcio);
             
@@ -57,12 +61,17 @@ namespace MVC_Web.Controllers
         [HttpPost]
         public ActionResult CrearYOtra(Unidad u, int Id)
         {
+            ViewBag.IdConsorcio = u.IdConsorcio;
+            var consorcio = consorServi.obtenerConsorcio(u.IdConsorcio);
+            ViewBag.NombreConsorcio = consorcio.Nombre;
+            ViewBag.FechaCreacion = DateTime.Now.ToString();
+
             if (!ModelState.IsValid)
             {
-                //return View();
-                return Redirect("/Unidad/Crear/" + Id);
+                return View("Crear");
+                //return Redirect("/Unidad/Crear/" + Id);
             }
-
+            TempData["SuccessMsg"] = "Unidad " + u.Nombre + " creada con éxito";
             uniServi.Crear(u);
             return Redirect("/Unidad/Crear/" + Id);
 
@@ -75,11 +84,6 @@ namespace MVC_Web.Controllers
 
             Unidad u = uniServi.ObtenerPorId(IdUnidad);
 
-            if (u == null)
-            {
-                TempData["Message"] = "La unidad elegida no existe";
-                return Redirect("/unidad/lista/"+Id);
-            }
             return View(u);
         }
 
@@ -90,10 +94,10 @@ namespace MVC_Web.Controllers
             {
                 return View(u);
             }
-
+            
             uniServi.Modificar(u);
 
-            return Redirect("/unidad/lista"+u.IdConsorcio);
+            return Redirect("/unidad/lista/"+u.IdConsorcio);
         }
 
         public ActionResult Eliminar(int Id, int IdUnidad)
