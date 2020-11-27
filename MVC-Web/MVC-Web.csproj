@@ -323,16 +323,13 @@
     <Content Include="Views\Unidad\Lista.cshtml" />
     <Content Include="Views\Unidad\Crear.cshtml" />
     <Content Include="Views\Unidad\Modificar.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Consorcio\create.cshtml" />
     <Content Include="Views\Gasto\Lista.cshtml" />
     <Content Include="Views\Gasto\Create.cshtml" />
     <Content Include="Views\Gasto\Update.cshtml" />
     <Content Include="Views\Home\Ingreso.cshtml" />
     <Content Include="Views\Home\Registro.cshtml" />
-=======
     <Content Include="Views\Unidad\Eliminar.cshtml" />
->>>>>>> remotes/origin/expensa2
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

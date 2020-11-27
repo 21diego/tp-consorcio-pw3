@@ -21,11 +21,7 @@ namespace MVC_Web.Controllers
             uniServi = new UnidadServicio(ctx);
             consorServi = new ConsorcioServicio(ctx);
         }
-<<<<<<< HEAD
-        public ActionResult Lista(int idConsorcio)
-=======
         public ActionResult Lista(int Id)
->>>>>>> remotes/origin/expensa2
         {
             ViewBag.IdConsorcio = Id;
 
@@ -35,10 +31,6 @@ namespace MVC_Web.Controllers
 
         public ActionResult Crear(int Id)
         {
-<<<<<<< HEAD
-            Console.WriteLine("hol");
-=======
-
             ViewBag.IdConsorcio = Id;
             
             var consorcio = consorServi.obtenerConsorcio(Id);
@@ -46,7 +38,6 @@ namespace MVC_Web.Controllers
 
             ViewBag.FechaCreacion = DateTime.Now.ToString();
 
->>>>>>> remotes/origin/expensa2
             return View();
         }
 
