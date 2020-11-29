@@ -43,8 +43,11 @@ namespace MVC_Web.Controllers
         [HttpPost]
         public ActionResult Create(Gasto gasto)
         {
+            gasto.ArchivoComprobante = "stringdeprueba";
+            gasto.IdUsuarioCreador = 1;
+            gasto.FechaCreacion = DateTime.Now;
             GastoServ.guardarGasto(gasto);
-            return Redirect("Lista");
+            return Redirect("Lista?idConsorcio="+gasto.IdConsorcio);
         }
         [HttpGet]
         public ActionResult Update(int idGasto)

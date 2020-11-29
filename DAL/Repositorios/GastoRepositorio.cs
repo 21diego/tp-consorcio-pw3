@@ -21,14 +21,16 @@ namespace DAL.Repositorios
         {
             return context.Gastoes.Where(gasto => gasto.IdConsorcio == idConsorcio).ToList();
         }
+        
+        
 
         public void guardarGasto(Gasto gasto)
         {
-            try
-            {
+            /*try
+            {*/
                 context.Gastoes.Add(gasto);
                 context.SaveChanges();
-            }
+            /*}
             catch (DbEntityValidationException e)
             {
                 foreach (var eve in e.EntityValidationErrors)
@@ -43,7 +45,7 @@ namespace DAL.Repositorios
                 }
 
 
-            }
+            }*/
 
         }
 
