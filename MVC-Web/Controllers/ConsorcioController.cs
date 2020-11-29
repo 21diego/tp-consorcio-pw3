@@ -62,8 +62,10 @@ namespace MVC_Web.Controllers
         {
             Consorcio consorcio = servicioConsorcio.obtenerConsorcio(idConsorcio);
             List<Provincia> provincias = servicioProvincia.listarProvincias();
+            int cantidadUnidades = servicioConsorcio.cantidadUnidadesConsorcio(consorcio);
 
             ViewBag.provincias = provincias;
+            ViewBag.cantidadUnidades = cantidadUnidades;
 
             return View(consorcio);
         }
