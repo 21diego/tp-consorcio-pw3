@@ -24,7 +24,8 @@ namespace Servicios.Helper
         }
         public static void DestruirSession()
         {
-            HttpContext.Current.Session["usuario"] = null;
+            HttpContext.Current.Session.Remove("usuario");
+            Console.WriteLine(HttpContext.Current.Session["usuario"]);
         }
     }
 }

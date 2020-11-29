@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace MVC_Web.Controllers
 {
-    [NoLogin]
+    
     public class HomeController : Controller
     {
         UsuarioServicio usuarioServicio;
@@ -25,6 +25,7 @@ namespace MVC_Web.Controllers
             return View();
         }
 
+        [NoLogin]
         [HttpGet]
         public ActionResult Ingreso()
         {
@@ -42,6 +43,7 @@ namespace MVC_Web.Controllers
             return Redirect("Inicio");
         }
 
+        [NoLogin]
         [HttpGet]
         public ActionResult Registro()
         {
