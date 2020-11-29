@@ -6,7 +6,7 @@
 
 <h2>Nuevo Gasto</h2>
 
-@using (@Html.BeginForm())
+@using (@Html.BeginForm("Create", "Gasto", FormMethod.Post, new { enctype = "multipart/form-data" , runat = "server" }))
 {
     <div>
         @Html.DisplayName("Consorcio")
@@ -39,13 +39,13 @@
     </div>
     <div>
         @Html.DisplayName("Comprobante")
-        @Html.TextBox("ArchivoComprobante", null, new { @type = "File" })
+        @Html.TextBox("ArchivoComprobante", null, new { @type = "file" })
     </div>
     <div>
         @Html.DisplayName("Monto")
         @Html.TextBox("Monto", null, new { @type = "Number" })
     </div>
-    <button type="submit">Guardar</button>
+    <input type="submit" value="Crear" class="btn btn-default" />
     <p>@Html.ActionLink("Cancelar", "Lista", "Gasto", new { idConsorcio = ViewBag.consorcio.IdConsorcio }, new { @class = "btn-sm btn-danger" })</p>
 }
 

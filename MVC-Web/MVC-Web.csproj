@@ -292,6 +292,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Gastos\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

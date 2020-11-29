@@ -36,17 +36,17 @@ namespace Servicios
             return repositorio.obtenerGasto(idGasto);
         }
 
-        public Boolean eliminarGasto(int idGasto)
+        public  int eliminarGasto(int idGasto)
         {
             Gasto gasto = repositorio.obtenerGasto(idGasto);
             if (gasto != null)
             {
                 repositorio.eliminarGasto(gasto);
-                return true;
+                return gasto.IdConsorcio;
             }
             else
             {
-                return false;
+                return 0;
             }
 
         }

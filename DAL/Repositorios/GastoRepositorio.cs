@@ -23,7 +23,6 @@ namespace DAL.Repositorios
         }
         
         
-
         public void guardarGasto(Gasto gasto)
         {
             /*try
@@ -51,7 +50,8 @@ namespace DAL.Repositorios
 
         public void eliminarGasto(Gasto gasto)
         {
-            context.Gastoes.Remove(gasto);
+            context.Gastoes.Remove(gasto); 
+            context.SaveChanges();
         }
 
         public Gasto obtenerGasto(int idGasto)
