@@ -3,16 +3,16 @@
     ViewBag.Title = "Modificar";
     Layout = "~/Views/Shared/_UsuarioLayout.cshtml";
 }
-<nav>
+@*<nav>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
         <li class="breadcrumb-item"><a href="#">Library</a></li>
         <li class="breadcrumb-item active">Data</li>
     </ol>
-</nav>
+</nav>*@
 <header>
     <div class="jumbotron text-center">
-        <h1 class="display-5">Consorcio "Nombre"- Editando Unidad "1A"</h1>
+        <h1 class="display-5">Consorcio "@ViewBag.NombreConsorcio"- Editando Unidad "@Model.Nombre"</h1>
     </div>
 </header>
 <section>
@@ -72,7 +72,7 @@
             </form>
         </div>
         <div class="col">
-            <button type="submit" class="btn btn-primary">Eliminar</button>
+            <a href="/Unidad/Eliminar/@Model.IdConsorcio" class="btn btn-primary">Eliminar</a>
         </div>
     </div>
 </section>

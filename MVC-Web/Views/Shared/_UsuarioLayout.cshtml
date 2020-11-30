@@ -2,10 +2,9 @@
 @{
     Layout = "~/Views/Shared/_BaseLayout.cshtml";
 }
+@Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/js/DataTables/js")
 @Styles.Render("~/js/DataTables/css")
-@Scripts.Render("~/js")
-@Scripts.Render("~/bundles/jqueryval")
 @RenderSection("scripts", required: false)
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -27,5 +26,10 @@
     </nav>
 </div>
 <div class="container body-content">
+    <nav>
+        <ol class="breadcrumb">
+            @Html.MvcSiteMap().SiteMapPath("_BootstrapSiteMapPathHelperModel")
+        </ol>
+    </nav>
     @RenderBody()
 </div>

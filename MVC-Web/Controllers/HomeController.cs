@@ -1,5 +1,7 @@
 ﻿using DAL;
 using MVC_Web.Tags;
+using MvcSiteMapProvider;
+using MvcSiteMapProvider.Web.Mvc.Filters;
 using Servicios;
 using System;
 using System.Collections.Generic;
@@ -68,6 +70,37 @@ namespace MVC_Web.Controllers
         {
             usuarioServicio.desloguearUsuario();
             return Redirect("Inicio");
+        }
+
+
+
+        [SiteMapTitle("title")]
+        public ActionResult EditarConsorcio(int id)
+        {
+            ViewData["Title"] = "Consorcio \"Villanova\"";
+            return View();
+        }
+
+        private static void SetConsorcioBreadcrumbTitle()
+        {
+            string nombreConsorcio = "Villanova";
+            var node = SiteMaps.Current.CurrentNode;
+            FindParentNode(node, "ConsorcioX", $"Consorcio \"{nombreConsorcio}\"");
+        }
+
+        private static void FindParentNode(ISiteMapNode node, string oldTitle, string newTitle)
+        {
+            if (node.Title == oldTitle)
+            {
+                node.Title = newTitle;
+            }
+            else
+            {
+                if (node.ParentNode != null)
+                {
+                    FindParentNode(node.ParentNode, oldTitle, newTitle);
+                }
+            }
         }
     }
 }

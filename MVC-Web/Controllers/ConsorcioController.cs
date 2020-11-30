@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using DAL;
 using MVC_Web.Tags;
+using MvcSiteMapProvider.Web.Mvc.Filters;
 using Servicios;
 
 namespace MVC_Web.Controllers
@@ -58,12 +59,15 @@ namespace MVC_Web.Controllers
         }
 
         [HttpGet]
+        [SiteMapTitle("title")]
         public ActionResult update(int idConsorcio)
         {
             Consorcio consorcio = servicioConsorcio.obtenerConsorcio(idConsorcio);
             List<Provincia> provincias = servicioProvincia.listarProvincias();
 
             ViewBag.provincias = provincias;
+
+            ViewData["Title"] = "Consorcio \"" + consorcio.Nombre +"\"";
 
             return View(consorcio);
         }
