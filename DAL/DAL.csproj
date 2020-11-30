@@ -81,6 +81,7 @@
     <Compile Include="Repositorios\GastoRepositorio.cs" />
     <Compile Include="Repositorios\ProvinciaRepositorio.cs" />
     <Compile Include="Repositorios\TipoGastoRepositorio.cs" />
+    <Compile Include="Repositorios\UsuarioRepositorio.cs" />
     <Compile Include="TipoGasto.cs">
       <DependentUpon>ConsorcioDB.tt</DependentUpon>
     </Compile>
@@ -91,6 +92,12 @@
     <Compile Include="Usuario.cs">
       <DependentUpon>ConsorcioDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Validaciones\Consorcio.cs" />
+    <Compile Include="Validaciones\ConsorcioMetadata.cs" />
+    <Compile Include="Validaciones\Gasto.cs" />
+    <Compile Include="Validaciones\GastoMetadata.cs" />
+    <Compile Include="Validaciones\Unidad.cs" />
+    <Compile Include="Validaciones\UnidadMetadata.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="ConsorcioDB.edmx">

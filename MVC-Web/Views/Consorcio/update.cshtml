@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_UsuarioLayout.cshtml";
 }
 
-<h2>Modificar Consorcio</h2>
+<h2>Consorcio "@Model.Nombre" - Editando</h2>
 
 @using (@Html.BeginForm())
 {
@@ -33,6 +33,14 @@
         @Html.EditorFor(model => Model.DiaVencimientoExpensas)
     </div>
     <button type="submit">Guardar</button>
-    <button type="reset">Cancelar</button>
+    <button>@Html.ActionLink("Cancelar", "Index", "Consorcio", new { @class = "btn-sm btn-danger" })</button>
 }
+
+<div>
+    <p>@ViewBag.cantidadUnidades Unidades</p>
+    <a>@Html.ActionLink("Ver Unidades", "lista", "Unidad", new { @id = Model.IdConsorcio }, null)</a>
+    <a>@Html.ActionLink("Ver Expensas", "Index", "Expensa", null)</a>
+    <a>@Html.ActionLink("Ver Gastos", "Lista", "Gasto", new { @idConsorcio = Model.IdConsorcio }, null)</a>
+    <button>@Html.ActionLink("Eliminar Consorcio", "delete", "Consorcio", new { @id = Model.IdConsorcio }, null)</button>
+</div>
 

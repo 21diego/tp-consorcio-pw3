@@ -4,10 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DAL;
+using MVC_Web.Tags;
 using Servicios;
 
 namespace MVC_Web.Controllers
 {
+    [Autenticado]
     public class ConsorcioController : Controller
     {
         ConsorcioServicio servicioConsorcio;
@@ -60,8 +62,10 @@ namespace MVC_Web.Controllers
         {
             Consorcio consorcio = servicioConsorcio.obtenerConsorcio(idConsorcio);
             List<Provincia> provincias = servicioProvincia.listarProvincias();
+            int cantidadUnidades = servicioConsorcio.cantidadUnidadesConsorcio(consorcio);
 
             ViewBag.provincias = provincias;
+            ViewBag.cantidadUnidades = cantidadUnidades;
 
             return View(consorcio);
         }

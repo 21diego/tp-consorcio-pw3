@@ -1,0 +1,35 @@
+﻿@model DAL.Unidad
+@{
+    ViewBag.Title = "Eliminar";
+    Layout = "~/Views/Shared/_UsuarioLayout.cshtml";
+}
+
+<nav>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Library</a></li>
+        <li class="breadcrumb-item active">Data</li>
+    </ol>
+</nav>
+<header>
+    <div class="jumbotron text-center">
+        <h1 class="display-5">Eliminar</h1>
+    </div>
+</header>
+<section>
+    <div class="text-center">
+        <h1>
+            ¿Esta seguro que desea eliminar el unidad @Model.Nombre?
+        </h1>
+    </div>
+    <hr />
+    <form action="/Unidad/Eliminar" method="post">
+        <fieldset class="text-center">
+            @Html.HiddenFor(Model => Model.IdUnidad)
+            @Html.HiddenFor(Model => Model.IdConsorcio)
+            <input type="submit" class="btn btn-primary" name="accion" value="Eliminar" />
+            <a href="/Unidad/Lista/@ViewBag.IdConsorcio" class="btn btn-primary">Cancelar</a>
+        </fieldset>
+    </form>
+</section>
+

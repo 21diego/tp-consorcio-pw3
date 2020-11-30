@@ -4,8 +4,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
-    @Styles.Render("~/Content/css")
+    <title>@ViewBag.Title - SAC</title>
+    @*@Styles.Render("~/Content/css")*@
+    @Styles.Render("~/css")
+    @Scripts.Render("~/js")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 </head>
 <body>
     <div class="container body-content">
@@ -15,10 +20,5 @@
             @{ Html.RenderPartial("~/Views/Shared/_pwFooter.cshtml");}
         </footer>
     </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Styles.Render("~/css")
-    @RenderSection("scripts", required: false)
 </body>
 </html>

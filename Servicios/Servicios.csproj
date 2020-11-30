@@ -52,9 +52,11 @@
     <Compile Include="ConsorcioServicio.cs" />
     <Compile Include="ExpensaServicio.cs" />
     <Compile Include="GastoServicio.cs" />
+    <Compile Include="Helper\SessionHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProvinciaServicio.cs" />
     <Compile Include="UnidadServicio.cs" />
+    <Compile Include="UsuarioServicio.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">
@@ -66,5 +68,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

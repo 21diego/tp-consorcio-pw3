@@ -51,5 +51,10 @@ namespace DAL
 
             context.SaveChanges();
         }
+
+        public int cantidadUnidadesConsorcio(Consorcio consorcio)
+        {
+            return context.Unidads.Where(c => c.IdConsorcio == consorcio.IdConsorcio).Count();
+        }
     }
 }

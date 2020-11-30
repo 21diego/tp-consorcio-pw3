@@ -29,6 +29,16 @@ namespace MVC_Web
             bundles.Add(new StyleBundle("~/css").Include(
                       "~/css/bootstrap.min.css",
                       "~/css/main.css"));
+
+            bundles.Add(new ScriptBundle("~/js").Include(
+            "~/js/tabla-paginacion.js",
+            "~/js/bootstrap-notify.min.js"));
+
+            bundles.Add(new ScriptBundle("~/js/DataTables/js").Include(
+                        "~/js/DataTables/js/data*"));
+
+            bundles.Add(new StyleBundle("~/js/DataTables/css").Include(
+                        "~/js/DataTables/css/data*"));
         }
     }
 }

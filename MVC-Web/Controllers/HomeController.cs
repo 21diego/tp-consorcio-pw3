@@ -1,4 +1,7 @@
-﻿using System;
+﻿using DAL;
+using MVC_Web.Tags;
+using Servicios;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,25 +9,65 @@ using System.Web.Mvc;
 
 namespace MVC_Web.Controllers
 {
+    
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        UsuarioServicio usuarioServicio;
+
+        public HomeController()
+        {
+            ConsorcioCtx context = new ConsorcioCtx();
+            usuarioServicio = new UsuarioServicio(context);
+        }
+
+        public ActionResult Inicio()
         {
             return View();
         }
 
-        public ActionResult About()
+        [NoLogin]
+        [HttpGet]
+        public ActionResult Ingreso()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
-        public ActionResult Contact()
+        [HttpPost]
+        public ActionResult Ingreso(Usuario usuario)
         {
-            ViewBag.Message = "Your contact page.";
+            Boolean response = usuarioServicio.loguearUsuario(usuario);
+            if(response == true)
+            {
+                return RedirectToAction("Index", "Consorcio");
+            }
+            return Redirect("Inicio");
+        }
 
+        [NoLogin]
+        [HttpGet]
+        public ActionResult Registro()
+        {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Registro(Usuario usuario, string pass2)
+        {
+            Boolean response = usuarioServicio.registrarUsuario(usuario, pass2);
+             if(response == true)
+            {
+                return Redirect("Inicio");
+            }
+            else
+            {
+                return View("Registro");
+            }
+        }
+
+        public ActionResult Salir()
+        {
+            usuarioServicio.desloguearUsuario();
+            return Redirect("Inicio");
         }
     }
 }
