@@ -51,7 +51,7 @@ namespace MVC_Web.Controllers
                 comprobante.SaveAs(Server.MapPath(string.Concat("~", gasto.ArchivoComprobante)));
             }
                 
-            gasto.IdUsuarioCreador = 1;
+            gasto.IdUsuarioCreador = Helper.ObtenerUsuarioEnSesion();
             gasto.FechaCreacion = DateTime.Now;
             GastoServ.guardarGasto(gasto);
             return Redirect("Lista?idConsorcio="+gasto.IdConsorcio);
