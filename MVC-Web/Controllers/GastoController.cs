@@ -81,7 +81,9 @@ namespace MVC_Web.Controllers
 
         public ActionResult EliminarGasto(int idGasto)
         {
-            int idConsorcio = GastoServ.eliminarGasto(idGasto);
+            Gasto gasto = GastoServ.obtenerGasto(idGasto);
+            var archivo = Server.MapPath(string.Concat("~", gasto.ArchivoComprobante));
+            int idConsorcio = GastoServ.eliminarGasto(gasto, archivo);
             if (idConsorcio != 0)
             {
                 return Redirect("Lista?idConsorcio=" + idConsorcio);

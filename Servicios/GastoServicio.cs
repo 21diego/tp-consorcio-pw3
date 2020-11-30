@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using DAL;
 
 namespace Servicios
@@ -36,11 +37,14 @@ namespace Servicios
             return repositorio.obtenerGasto(idGasto);
         }
 
-        public  int eliminarGasto(int idGasto)
+        public  int eliminarGasto(Gasto gasto, string archivo)
         {
-            Gasto gasto = repositorio.obtenerGasto(idGasto);
             if (gasto != null)
             {
+                if (System.IO.File.Exists(archivo))
+                {
+                    System.IO.File.Delete(archivo);
+                }
                 repositorio.eliminarGasto(gasto);
                 return gasto.IdConsorcio;
             }
