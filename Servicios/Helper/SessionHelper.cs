@@ -27,5 +27,9 @@ namespace Servicios.Helper
             HttpContext.Current.Session.Remove("usuario");
             Console.WriteLine(HttpContext.Current.Session["usuario"]);
         }
+        public static int ObtenerUsuarioEnSesion()
+        {
+            return (int)HttpContext.Current.Session["usuario"];
+        }
     }
 }

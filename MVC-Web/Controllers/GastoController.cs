@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using DAL;
 using MVC_Web.Tags;
 using Servicios;
+using Servicios.Helper;
 
 namespace MVC_Web.Controllers
 {
@@ -53,7 +54,7 @@ namespace MVC_Web.Controllers
                 comprobante.SaveAs(Server.MapPath(string.Concat("~", gasto.ArchivoComprobante)));
             }
                 
-            gasto.IdUsuarioCreador = Helper.ObtenerUsuarioEnSesion();
+            gasto.IdUsuarioCreador = SessionHelper.ObtenerUsuarioEnSesion();
             gasto.FechaCreacion = DateTime.Now;
             GastoServ.guardarGasto(gasto);
             return Redirect("Lista?idConsorcio="+gasto.IdConsorcio);
