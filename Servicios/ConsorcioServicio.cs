@@ -61,5 +61,10 @@ namespace Servicios
                 return false;
             }
         }
+
+        public int cantidadUnidadesConsorcio(Consorcio consorcio)
+        {
+            return repositorio.cantidadUnidadesConsorcio(consorcio);
+        }
     }
 }
