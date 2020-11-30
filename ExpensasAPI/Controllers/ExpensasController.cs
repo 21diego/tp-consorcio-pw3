@@ -22,7 +22,6 @@ namespace ApiConsorcioExpensas.Controllers
         [HttpGet]
         public IEnumerable<ExpensasDTO> Get(int idConsorcio)
         {
-
             return ExpensasServ.ObtenerExpensas(idConsorcio);
         }
     }

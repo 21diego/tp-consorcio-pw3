@@ -127,7 +127,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ConsorcioController.cs" />
-    <Compile Include="Controllers\ExpensaController.cs" />
+    <Compile Include="Controllers\ExpensasController.cs" />
     <Compile Include="Controllers\GastoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UnidadController.cs" />
@@ -315,7 +315,7 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Expensa\Index.cshtml" />
+    <Content Include="Views\Expensas\Index.cshtml" />
     <Content Include="Views\Shared\_BaseLayout.cshtml" />
     <Content Include="Views\Shared\_AnonimoLayout.cshtml" />
     <Content Include="Views\Shared\_UsuarioLayout.cshtml" />
