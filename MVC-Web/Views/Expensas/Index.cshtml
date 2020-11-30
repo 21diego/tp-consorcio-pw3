@@ -1,4 +1,4 @@
-﻿
+﻿@model List<DAL.ExpensasDTO>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_UsuarioLayout.cshtml";
@@ -12,27 +12,27 @@
 </nav>
 <header>
     <div class="jumbotron text-center">
-        <h1 class="display-5" >Consorcio "Nombre"- Expensas</h1>
+        <h1 class="display-5">Expensas del consorcio</h1>
     </div>
 </header>
 <section>
     <div class="row">
         <div class="col-md-8">
-            <h4>Gasto Total Mes Actual Septiembre(hasta el momento):</h4>
+            <h4>Gasto Total Mes Actual @ViewBag.expensasMesActual.MesExpensa (hasta el momento):</h4>
         </div>
         <div class="col-md-4">
-            <h4>$95000</h4>
+            <h4>@ViewBag.expensasMesActual.GastoTotal</h4>
         </div>
     </div>
     <div class="row">
         <div class="col-md-4">
-            <h4>Unidades: 22</h4>
+            <h4>Unidades: @ViewBag.expensasMesActual.Unidades</h4>
         </div>
         <div class="col-md-4">
             <h4>Monto x Unidad:</h4>
         </div>
         <div class="col-md-4">
-            <h4>$4320</h4>
+            <h4>@ViewBag.expensasMesActual.MontoExpensa</h4>
         </div>
     </div>
 </section>
@@ -45,24 +45,18 @@
             <th>Gasto Total ($)</th>
             <th>Expensas x Unidad ($)</th>
         </tr>
-        <tr>
-            <td>2020</td>
-            <td>8</td>
-            <td>110000</td>
-            <td>5000</td>
-        </tr>
-        <tr>
-            <td>2020</td>
-            <td>7</td>
-            <td>360000</td>
-            <td>15000</td>
-        </tr>
-        <tr>
-            <td>2020</td>
-            <td>6</td>
-            <td>110000</td>
-            <td>5000</td>
-        </tr>
+        @foreach (var e in Model)
+        {
+            if (!(e.AnioExpensa== DateTime.Now.Year&&e.MesExpensa==DateTime.Now.Month))
+            {
+                <tr>
+                    <td>@e.AnioExpensa</td>
+                    <td>@e.MesExpensa</td>
+                    <td>@e.GastoTotal</td>
+                    <td>@e.MontoExpensa</td>
+                </tr>
+            }
+        }
     </table>
 
 </section>

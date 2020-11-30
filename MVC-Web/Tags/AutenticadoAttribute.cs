@@ -11,7 +11,6 @@ namespace MVC_Web.Tags
 {
     class AutenticadoAttribute : ActionFilterAttribute
     {
-        SessionHelper sessionHelper;
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             base.OnActionExecuting(filterContext);
