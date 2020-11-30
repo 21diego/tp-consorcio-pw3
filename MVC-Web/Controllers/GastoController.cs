@@ -42,12 +42,23 @@ namespace MVC_Web.Controllers
             ViewBag.tiposGastos = GastoServ.ObtenerTiposGastos();
             return View();
         }
+
         [HttpPost]
         public ActionResult Create(Gasto gasto)
         {
+            if (Request.Files.Count > 0 && Request.Files[0].ContentLength > 0)
+            {
+                var comprobante = Request.Files[0];
+                gasto.ArchivoComprobante = "/Gastos/" + comprobante.FileName;
+                comprobante.SaveAs(Server.MapPath(string.Concat("~", gasto.ArchivoComprobante)));
+            }
+                
+            gasto.IdUsuarioCreador = Helper.ObtenerUsuarioEnSesion();
+            gasto.FechaCreacion = DateTime.Now;
             GastoServ.guardarGasto(gasto);
-            return Redirect("Lista");
+            return Redirect("Lista?idConsorcio="+gasto.IdConsorcio);
         }
+
         [HttpGet]
         public ActionResult Update(int idGasto)
         {
@@ -61,6 +72,25 @@ namespace MVC_Web.Controllers
         {
             GastoServ.editarGasto(gasto);
             return Redirect("Lista");
+        }
+
+        [HttpGet]
+        public ActionResult VerComprobante(int idGasto)
+        {
+            string rutaComprobante = GastoServ.obtenerGasto(idGasto).ArchivoComprobante;
+            return Redirect("~/"+rutaComprobante);
+        }
+
+        public ActionResult EliminarGasto(int idGasto)
+        {
+            Gasto gasto = GastoServ.obtenerGasto(idGasto);
+            var archivo = Server.MapPath(string.Concat("~", gasto.ArchivoComprobante));
+            int idConsorcio = GastoServ.eliminarGasto(gasto, archivo);
+            if (idConsorcio != 0)
+            {
+                return Redirect("Lista?idConsorcio=" + idConsorcio);
+            }
+            return View("~/Views/Shared/Error.cshtml");
         }
     }
 }

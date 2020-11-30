@@ -5,7 +5,7 @@
 }
 
 <h2>Lista de Gastos - @ViewBag.consorcio.Nombre</h2>
-<p>@Html.ActionLink("Nuevo gasto", "create", "Gasto", new { idConsorcio = ViewBag.consorcio.IdConsorcio}, new { @class = "btn-sm btn-info"})</p>
+<p>@Html.ActionLink("Nuevo gasto", "create", "Gasto", new { idConsorcio = ViewBag.consorcio.IdConsorcio }, new { @class = "btn-sm btn-info" })</p>
 <table class="table">
     <tr>
         <th>Año</th>
@@ -26,8 +26,36 @@
             <td>@Html.DisplayFor(m => item.TipoGasto.Nombre)</td>
             <td>@Html.DisplayFor(m => item.FechaGasto)</td>
             <td>@Html.DisplayFor(m => item.Monto)</td>
-            <td>@Html.ActionLink("Descargar comprobante", "DescargarComprobante", "Gasto", new { idGasto = item.IdGasto }, null)</td>
-            <td>@Html.ActionLink("Borrar", "delete", "Consorcio", new { idGasto = item.IdGasto }, null)</td>
+            <td>@Html.ActionLink("Ver comprobante", "VerComprobante", "Gasto", new { idGasto = item.IdGasto }, new { @target = "_blank" })</td>
+            <td>
+                @{ string idModal = "delete" + item.IdGasto; }
+
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#@idModal">Borrar</button>
+                
+                <div class="modal fade" id=@idModal tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Comprobante: @item.ArchivoComprobante</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Estas seguro que desea eliminar el comprobante @item.ArchivoComprobante de la lista?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">No, cancelar</button>
+                                @Html.ActionLink("Si, estoy seguro", "EliminarGasto", "Gasto", new { idGasto = item.IdGasto }, new { @class = "btn btn-primary" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
         </tr>
+        
     }
 </table>
+
+
+
