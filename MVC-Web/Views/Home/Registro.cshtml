@@ -5,17 +5,20 @@
 }
 
 <h2>Registro</h2>
-
 @using (@Html.BeginForm())
 {
-    <div>
-        @Html.DisplayNameFor(model => Model.Email)
-        @Html.TextBoxFor(model => Model.Email)
-    </div>
-    <div>
-        @Html.DisplayNameFor(model => Model.Password)
-        @Html.TextBoxFor(model => Model.Password, new { @type = "password" })
-    </div>
+<div>
+    @Html.DisplayNameFor(model => Model.Email)
+    @Html.TextBoxFor(model => Model.Email)
+    @Html.ValidationMessageFor(Model => Model.Email)
+    <p>@TempData["mensaje"]</p>
+</div>
+<div>
+    @Html.DisplayNameFor(model => Model.Password)
+    @Html.TextBoxFor(model => Model.Password, new { @type = "password" })
+    @Html.ValidationMessageFor(Model => Model.Password)
+    <p>@TempData["mensaje"]</p>
+</div>
     <div>
         <label for="pass2">Repetir Password</label>
         <input type="password" name="pass2" id="pass2"/>

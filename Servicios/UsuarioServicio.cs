@@ -17,19 +17,23 @@ namespace Servicios
             usuarioRepositorio = new UsuarioRepositorio(contexto);
         }
 
-        public Boolean registrarUsuario(Usuario usuario, string pass2)
+        public string registrarUsuario(Usuario usuario, string pass2)
         {
             Usuario usuarioObtenido = usuarioRepositorio.buscarUsuarioPorEmail(usuario.Email);
 
-            if (usuarioObtenido == null && usuario.Password == pass2)
+            if (usuarioObtenido != null)
             {
-                usuario.FechaRegistracion = System.DateTime.Now;
-                usuarioRepositorio.crearUsuario(usuario);
-                return true;
+                return "El email ya esta en uso";
+            }
+            if(usuario.Password != pass2 && usuario.Password != null)
+            {
+                return "Las contraseñas no coinciden";
             }
             else
             {
-                return false;
+                usuario.FechaRegistracion = System.DateTime.Now;
+                usuarioRepositorio.crearUsuario(usuario);
+                return "Registrado con éxito";
             }
 
         }

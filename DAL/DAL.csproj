@@ -98,6 +98,8 @@
     <Compile Include="Validaciones\GastoMetadata.cs" />
     <Compile Include="Validaciones\Unidad.cs" />
     <Compile Include="Validaciones\UnidadMetadata.cs" />
+    <Compile Include="Validaciones\Usuario.cs" />
+    <Compile Include="Validaciones\UsuarioMetadata.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="ConsorcioDB.edmx">
