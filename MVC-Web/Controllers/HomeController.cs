@@ -53,13 +53,19 @@ namespace MVC_Web.Controllers
         [HttpPost]
         public ActionResult Registro(Usuario usuario, string pass2)
         {
-            Boolean response = usuarioServicio.registrarUsuario(usuario, pass2);
-             if(response == true)
+            if (pass2.Equals(""))
+            {
+                return View("Registro");
+            }
+            TempData.Remove("mensaje");
+            string response = usuarioServicio.registrarUsuario(usuario, pass2);
+            if (response.Equals("Registrado con éxito"))
             {
                 return Redirect("Inicio");
             }
             else
             {
+                TempData.Add("mensaje", response);
                 return View("Registro");
             }
         }

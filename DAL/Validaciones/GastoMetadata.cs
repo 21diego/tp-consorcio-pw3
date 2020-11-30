@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    class GastoMetadata
+    internal class GastoMetadata
     {
         [Required(ErrorMessage = "Debe ingresar un valor correspondiente al nombre")]
         public string Nombre { get; set; }
@@ -16,12 +16,15 @@ namespace DAL
         [Required(ErrorMessage = "Debe ingresar una fecha de gasto")]
         public System.DateTime FechaGasto { get; set; }
         [Required(ErrorMessage = "Debe ingresar un valor correspondiente al año de Expensa")]
+        [RegularExpression("^[0-9]+$", ErrorMessage = "Ingrese un número entero")]
         public int AnioExpensa { get; set; }
         [Required(ErrorMessage = "Debe ingresar un valor correspondiente al mes de Expensa")]
+        [RegularExpression("^[0-9]+$", ErrorMessage = "Ingrese un número entero")]
         public int MesExpensa { get; set; }
         [Required(ErrorMessage = "Debe cargar un comprobante")]
         public string ArchivoComprobante { get; set; }
         [Required(ErrorMessage = "Debe ingresar un valor correspondiente al monto")]
+        [RegularExpression("^[0-9]+$", ErrorMessage = "Ingrese un número entero")]
         public decimal Monto { get; set; }
     }
 }

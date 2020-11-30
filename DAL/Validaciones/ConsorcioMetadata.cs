@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    class ConsorcioMetadata
+    internal class ConsorcioMetadata
     {
         [Required(ErrorMessage = "Debe ingresar un valor correspondiente al nombre")]
         [DataType(DataType.Text)]
