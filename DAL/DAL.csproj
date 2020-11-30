@@ -92,6 +92,10 @@
     <Compile Include="Usuario.cs">
       <DependentUpon>ConsorcioDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Validaciones\Consorcio.cs" />
+    <Compile Include="Validaciones\ConsorcioMetadata.cs" />
+    <Compile Include="Validaciones\Gasto.cs" />
+    <Compile Include="Validaciones\GastoMetadata.cs" />
     <Compile Include="Validaciones\Unidad.cs" />
     <Compile Include="Validaciones\UnidadMetadata.cs" />
   </ItemGroup>

@@ -8,31 +8,37 @@
 
 @using (@Html.BeginForm())
 {
-    <div>
-        @Html.DisplayNameFor(model => Model.Nombre)
-        @Html.TextBoxFor(model => Model.Nombre)
-    </div>
-    <div>
-        @Html.DisplayNameFor(model => Model.Provincia)
-        @Html.DropDownListFor(model => Model.IdProvincia, new SelectList(ViewBag.provincias, "IdProvincia", "Nombre"))
-    </div>
-    <div>
-        @Html.DisplayNameFor(model => Model.Ciudad)
-        @Html.TextBoxFor(model => Model.Ciudad)
-    </div>
-    <div>
-        @Html.DisplayNameFor(model => Model.Calle)
-        @Html.TextBoxFor(model => Model.Calle)
-    </div>
-    <div>
-        @Html.DisplayNameFor(model => Model.Altura)
-        @Html.TextBoxFor(model => Model.Altura)
-    </div>
-    <div>
-        @Html.DisplayNameFor(model => Model.DiaVencimientoExpensas)
-        @Html.EditorFor(model => Model.DiaVencimientoExpensas)
-    </div>
+<div>
+    @Html.DisplayNameFor(model => Model.Nombre)
+    @Html.TextBoxFor(model => Model.Nombre)
+    @Html.ValidationMessageFor(Model => Model.Nombre)
+</div>
+<div>
+    @Html.DisplayNameFor(model => Model.Provincia)
+    @Html.DropDownListFor(model => Model.IdProvincia, new SelectList(ViewBag.provincias, "IdProvincia", "Nombre"), "Seleccione una Provincia")
+    @Html.ValidationMessageFor(Model => Model.IdProvincia)
+</div>
+<div>
+    @Html.DisplayNameFor(model => Model.Ciudad)
+    @Html.TextBoxFor(model => Model.Ciudad)
+    @Html.ValidationMessageFor(Model => Model.Ciudad)
+</div>
+<div>
+    @Html.DisplayNameFor(model => Model.Calle)
+    @Html.TextBoxFor(model => Model.Calle)
+    @Html.ValidationMessageFor(Model => Model.Calle)
+</div>
+<div>
+    @Html.DisplayNameFor(model => Model.Altura)
+    @Html.TextBoxFor(model => Model.Altura)
+    @Html.ValidationMessageFor(Model => Model.Altura)
+</div>
+<div>
+    @Html.DisplayNameFor(model => Model.DiaVencimientoExpensas)
+    @Html.EditorFor(model => Model.DiaVencimientoExpensas)
+    @Html.ValidationMessageFor(Model => Model.DiaVencimientoExpensas)
+</div>
     <button type="submit">Guardar</button>
-    <button type="reset">Cancelar</button>
+    <p>@Html.ActionLink("Cancelar", "Index", "Consorcio", new { @class = "btn-sm btn-danger" })</p>
 }
 
