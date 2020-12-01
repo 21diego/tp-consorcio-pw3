@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using DAL;
 using MVC_Web.Tags;
+using MvcSiteMapProvider;
+using MvcSiteMapProvider.Web.Mvc.Filters;
 using Servicios;
 using Servicios.Helper;
 
@@ -33,6 +35,8 @@ namespace MVC_Web.Controllers
             List<Gasto> listaGastos = GastoServ.listarGastos((int)idConsorcio);
             //Buscar el consorcio al que pertenece el gasto segun IdConsorcio
             ViewBag.consorcio = ConsorcioServ.obtenerConsorcio((int)idConsorcio);
+            SetConsorcioBreadcrumbTitle((int)idConsorcio);
+
             return View(listaGastos);
         }
 
@@ -75,6 +79,7 @@ namespace MVC_Web.Controllers
             return Redirect("Lista");
         }
 
+
         [HttpGet]
         public ActionResult VerComprobante(int idGasto)
         {
@@ -92,6 +97,29 @@ namespace MVC_Web.Controllers
                 return Redirect("Lista?idConsorcio=" + idConsorcio);
             }
             return View("~/Views/Shared/Error.cshtml");
+        }
+
+        private void SetConsorcioBreadcrumbTitle(int idConsorcio)
+        {
+            var consorcio = ConsorcioServ.obtenerConsorcio(idConsorcio);
+            string NombreConsorcio = consorcio.Nombre;
+            var node = SiteMaps.Current.CurrentNode;
+            FindParentNode(node, "ConsorcioX", $"Consorcio \"{NombreConsorcio}\"");
+        }
+
+        private static void FindParentNode(ISiteMapNode node, string oldTitle, string newTitle)
+        {
+            if (node.Title == oldTitle)
+            {
+                node.Title = newTitle;
+            }
+            else
+            {
+                if (node.ParentNode != null)
+                {
+                    FindParentNode(node.ParentNode, oldTitle, newTitle);
+                }
+            }
         }
     }
 }
