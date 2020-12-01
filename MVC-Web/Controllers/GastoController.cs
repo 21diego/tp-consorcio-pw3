@@ -61,7 +61,7 @@ namespace MVC_Web.Controllers
             gasto.IdUsuarioCreador = SessionHelper.ObtenerUsuarioEnSesion();
             gasto.FechaCreacion = DateTime.Now;
             GastoServ.guardarGasto(gasto);
-            return Redirect("Lista?idConsorcio="+gasto.IdConsorcio);
+            return RedirectToAction("Lista", new { idConsorcio = gasto.IdConsorcio } );
         }
 
         [HttpGet]
@@ -70,11 +70,20 @@ namespace MVC_Web.Controllers
             Gasto gasto = GastoServ.obtenerGasto(idGasto);
             ViewBag.consorcio = ConsorcioServ.obtenerConsorcio(gasto.IdConsorcio);
             ViewBag.tiposGastos = GastoServ.ObtenerTiposGastos();
+            string fechaGasto = gasto.FechaGasto.Date.ToString("MM/dd/yyyy");
             return View(gasto);
         }
+
         [HttpPost]
         public ActionResult Update(Gasto gasto)
         {
+            if (Request.Files.Count > 0 && Request.Files[0].ContentLength > 0)
+            {
+                var comprobante = Request.Files[0];
+                gasto.ArchivoComprobante = "/Gastos/" + comprobante.FileName;
+                comprobante.SaveAs(Server.MapPath(string.Concat("~", gasto.ArchivoComprobante)));
+            }
+
             GastoServ.editarGasto(gasto);
             return Redirect("Lista");
         }
