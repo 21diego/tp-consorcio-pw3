@@ -37,7 +37,7 @@ namespace Servicios
             return repositorio.obtenerGasto(idGasto);
         }
 
-        public  int eliminarGasto(Gasto gasto, string archivo)
+        public int eliminarGasto(Gasto gasto, string archivo)
         {
             if (gasto != null)
             {

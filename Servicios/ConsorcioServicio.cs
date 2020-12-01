@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using DAL;
 
 namespace Servicios
@@ -18,13 +19,15 @@ namespace Servicios
 
         public List<Consorcio> listarConsorcios()
         {
-            return repositorio.listarConsorcios();
+            int idUsuario = (int)HttpContext.Current.Session["usuario"];
+            return repositorio.listarConsorcios(idUsuario);
         }
 
         public void guardarConsorcio(Consorcio consorcio)
         {
             DateTime now = DateTime.Now;
             consorcio.FechaCreacion = now;
+            consorcio.IdUsuarioCreador = (int)HttpContext.Current.Session["usuario"];
             repositorio.guardarConsorcio(consorcio);
         }
 
