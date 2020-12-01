@@ -6,54 +6,71 @@
 
 <h2>Consorcio "@ViewBag.consorcio.Nombre" - Cargar Nuevo Gasto</h2>
 
-@using (@Html.BeginForm("Create", "Gasto", FormMethod.Post, new { enctype = "multipart/form-data" , runat = "server" }))
+@using (@Html.BeginForm("Create", "Gasto", FormMethod.Post, new { enctype = "multipart/form-data", runat = "server" }))
 {
-    <div>
-        @Html.DisplayName("Consorcio")
-        @Html.TextBox("consorcioNombre", (string)ViewBag.consorcio.Nombre, new { @disabled = "true" })
-        @Html.TextBox("IdConsorcio", (int)ViewBag.consorcio.IdConsorcio, new { @type = "hidden" })
-    </div>
-    <div>
-        @Html.DisplayName("TipoGasto")
-        @Html.DropDownListFor(model => Model.IdTipoGasto, new SelectList(ViewBag.tiposGastos, "IdTipoGasto", "Nombre"), "Seleccione un tipo de gasto")
-        @Html.ValidationMessageFor(Model => Model.IdTipoGasto)
-    </div>
-    <div>
-        @Html.DisplayName("Nombre")
-        @Html.TextBox("Nombre")
-        @Html.ValidationMessageFor(Model => Model.Nombre)
-    </div>
-    <div>
-        @Html.DisplayName("Descripcion")
-        @Html.TextArea("Descripcion")
-        @Html.ValidationMessageFor(Model => Model.Descripcion)
-    </div>
-    <div>
-        @Html.DisplayName("Fecha")
-        @Html.TextBox("FechaGasto", null, new { @type = "Date" })
-        @Html.ValidationMessageFor(Model => Model.FechaGasto)
-    </div>
-    <div>
-        @Html.DisplayName("Año Expensa")
-        @Html.TextBox("AnioExpensa", null, new { @type = "Number" })
-        @Html.ValidationMessageFor(Model => Model.AnioExpensa)
-    </div>
-    <div>
-        @Html.DisplayName("Mes Expensa")
-        @Html.TextBox("MesExpensa", null, new { @type = "Number" })
-        @Html.ValidationMessageFor(Model => Model.MesExpensa)
-    </div>
-    <div>
-        @Html.DisplayName("Comprobante")
-        @Html.TextBox("ArchivoComprobante", null, new { @type = "file" })
-        @Html.ValidationMessageFor(Model => Model.ArchivoComprobante)
-    </div>
-    <div>
-        @Html.DisplayName("Monto")
-        @Html.TextBox("Monto", null, new { @type = "Number" })
-        @Html.ValidationMessageFor(Model => Model.Monto)
-    </div>
-    <input type="submit" value="Crear" class="btn btn-default" />
-    <p>@Html.ActionLink("Cancelar", "Lista", "Gasto", new { idConsorcio = ViewBag.consorcio.IdConsorcio }, new { @class = "btn-sm btn-danger" })</p>
-}
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-6">
+            <div>
+                @Html.DisplayName("Consorcio")
+                @Html.TextBox("consorcioNombre", (string)ViewBag.consorcio.Nombre, new { @disabled = "true", @class = "form-control" })
+                @Html.TextBox("IdConsorcio", (int)ViewBag.consorcio.IdConsorcio, new { @type = "hidden" })
+            </div>
+            <div>
+                @Html.DisplayName("TipoGasto")
+                @Html.DropDownListFor(model => Model.IdTipoGasto, new SelectList(ViewBag.tiposGastos, "IdTipoGasto", "Nombre"), "Seleccione un tipo de gasto", new { @class = "form-control" })
+                @Html.ValidationMessageFor(Model => Model.IdTipoGasto)
+            </div>
+            <div>
+                @Html.DisplayName("Nombre")
+                @Html.TextBox("Nombre", null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(Model => Model.Nombre)
+            </div>
+            <div>
+                @Html.DisplayName("Descripcion")
+                @Html.TextArea("Descripcion", new { @class = "form-control" })
+                @Html.ValidationMessageFor(Model => Model.Descripcion)
+            </div>
+            <div>
+                @Html.DisplayName("Fecha")
+                @Html.TextBox("FechaGasto", null, new { @type = "Date", @class = "form-control" })
+                @Html.ValidationMessageFor(Model => Model.FechaGasto)
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div>
+                        @Html.DisplayName("Año Expensa")
+                        @Html.TextBox("AnioExpensa", null, new { @type = "Number", @class = "form-control" })
+                        @Html.ValidationMessageFor(Model => Model.AnioExpensa)
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div>
+                        @Html.DisplayName("Mes Expensa")
+                        @Html.TextBox("MesExpensa", null, new { @type = "Number", @class = "form-control" })
+                        @Html.ValidationMessageFor(Model => Model.MesExpensa)
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div>
+                    @Html.DisplayName("Comprobante")
+                    @Html.TextBox("ArchivoComprobante", null, new { @type = "file", @class = "form-control" })
+                    @Html.ValidationMessageFor(Model => Model.ArchivoComprobante)
+                </div>
+                <div>
+                    @Html.DisplayName("Monto")
+                    @Html.TextBox("Monto", null, new { @type = "Number", @class = "form-control" })
+                    @Html.ValidationMessageFor(Model => Model.Monto)
+                </div>
+                <div class="mt-3">
+                    <input type="submit" value="Crear" class="btn btn-primary mr-1" />
+                    @Html.ActionLink("Cancelar", "Lista", "Gasto", new { idConsorcio = ViewBag.consorcio.IdConsorcio }, new { @class = "btn btn-primary" })
+                </div>
+                
 
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+    }

@@ -2,49 +2,97 @@
 @{
     ViewBag.Title = "Update";
     Layout = "~/Views/Shared/_UsuarioLayout.cshtml";
+    string fechaGasto = Model.FechaGasto.Date.ToString("MM/dd/yyyy");
 }
 
-<h2>Consorcio "@ViewBag.consorcio.Nombre" - Editando Gasto "@Model.Nombre"</h2>
+<h2>Consorcio "@ViewBag.consorcio.Nombre" - Editar Gasto @Model.Nombre </h2>
 
-@using (@Html.BeginForm())
+@using (@Html.BeginForm("update", "Gasto", FormMethod.Post, new { enctype = "multipart/form-data", runat = "server" }))
 {
-    <div>
-        @Html.DisplayName("Consorcio")
-        @Html.TextBox("consorcioNombre", (string)ViewBag.consorcio.Nombre, new { @disabled = "true" })
-        @Html.TextBox("IdConsorcio", (int)ViewBag.consorcio.IdConsorcio, new { @type = "hidden" })
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-6">
+            <div>
+                @Html.DisplayName("Consorcio")
+                @Html.TextBox("consorcioNombre", (string)ViewBag.consorcio.Nombre, new { @disabled = "true", @class = "form-control" })
+                @Html.TextBox("IdConsorcio", (int)ViewBag.consorcio.IdConsorcio, new { @type = "hidden" })
+            </div>
+            <div>
+                @Html.DisplayName("TipoGasto")
+                @Html.DropDownListFor(model => Model.IdTipoGasto, new SelectList(ViewBag.tiposGastos, "IdTipoGasto", "Nombre"), "Seleccione un tipo de gasto", new { @class = "form-control" })
+                @Html.ValidationMessageFor(Model => Model.IdTipoGasto)
+            </div>
+            <div>
+                @Html.DisplayName("Nombre")
+                @Html.TextBox("Nombre", null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(Model => Model.Nombre)
+            </div>
+            <div>
+                @Html.DisplayName("Descripcion")
+                @Html.TextArea("Descripcion", null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(Model => Model.Descripcion)
+            </div>
+            <!--
+            <div>
+                @Html.DisplayName("Fecha de Gasto")
+                @Html.TextBox("FechaGasto", null, new { @type = "Date", @class = "form-control", @value = @fechaGasto })
+                @Html.ValidationMessageFor(Model => Model.FechaGasto)
+            </div>
+            -->
+            <div class="row">
+                <div class="col-6">
+                    <div>
+                        @Html.DisplayName("Año Expensa")
+                        @Html.TextBox("AnioExpensa", null, new { @type = "Number", @class = "form-control" })
+                        @Html.ValidationMessageFor(Model => Model.AnioExpensa)
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div>
+                        @Html.DisplayName("Mes Expensa")
+                        @Html.TextBox("MesExpensa", null, new { @type = "Number", @class = "form-control" })
+                        @Html.ValidationMessageFor(Model => Model.MesExpensa)
+                    </div>
+                </div>
+            </div>
+            <div>
+
+                @Html.DisplayName("Comprobante")
+                @Html.TextBox("ArchivoComprobante", null, new { @type = "file", @class = "form-control" })
+                @Html.ValidationMessageFor(Model => Model.ArchivoComprobante)
+            </div>
+            <div>
+                @Html.DisplayName("Monto")
+                @Html.TextBox("Monto", null, new { @type = "Number", @class = "form-control" })
+                @Html.ValidationMessageFor(Model => Model.Monto)
+            </div>
+            <div class="row justify-content-around mt-3">
+                <input type="submit" value="Actualizar" class="btn btn-primary" />
+                @Html.ActionLink("Cancelar", "Lista", "Gasto", new { idConsorcio = ViewBag.consorcio.IdConsorcio }, new { @class = "btn btn-primary" })
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#gastoModal">Borrar</button>
+            </div>
+            
+
+            <div class="modal fade" id="gastoModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Comprobante: @Model.ArchivoComprobante</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Estas seguro que desea eliminar el comprobante @Model.ArchivoComprobante de la lista?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No, cancelar</button>
+                            @Html.ActionLink("Si, estoy seguro", "EliminarGasto", "Gasto", new { idGasto = Model.IdGasto }, new { @class = "btn btn-primary" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col"></div>
     </div>
-    <div>
-        @Html.DisplayName("TipoGasto")
-        @Html.DropDownListFor(model => Model.IdTipoGasto, new SelectList(ViewBag.tiposGastos, "IdTipoGasto", "Nombre"))
-    </div>
-    <div>
-        @Html.DisplayName("Nombre")
-        @Html.TextBox("Nombre")
-    </div>
-    <div>
-        @Html.DisplayName("Descripcion")
-        @Html.TextArea("Descripcion")
-    </div>
-    <div>
-        @Html.DisplayName("Fecha")
-        @Html.TextBox("FechaGasto", null, new { @type = "Date" })
-    </div>
-    <div>
-        @Html.DisplayName("Año Expensa")
-        @Html.TextBox("AnioExpensa", null, new { @type = "Number" })
-    </div>
-    <div>
-        @Html.DisplayName("Mes Expensa")
-        @Html.TextBox("MesExpensa", null, new { @type = "Number" })
-    </div>
-    <div>
-        @Html.DisplayName("Comprobante")
-        @Html.TextBox("ArchivoComprobante", null, new { @type = "File" })
-    </div>
-    <div>
-        @Html.DisplayName("Monto")
-        @Html.TextBox("Monto")
-    </div>
-    <button type="submit">Guardar</button>
-    <p>@Html.ActionLink("Cancelar", "Lista", "Gasto", new { idConsorcio = ViewBag.consorcio.IdConsorcio }, new { @class = "btn-sm btn-danger" })</p>
 }
