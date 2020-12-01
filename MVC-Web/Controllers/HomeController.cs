@@ -21,7 +21,7 @@ namespace MVC_Web.Controllers
             ConsorcioCtx context = new ConsorcioCtx();
             usuarioServicio = new UsuarioServicio(context);
         }
-
+        [NoLogin]
         public ActionResult Inicio()
         {
             return View();
