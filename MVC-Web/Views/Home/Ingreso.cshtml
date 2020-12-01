@@ -10,12 +10,12 @@
 {
     <div>
         @Html.DisplayNameFor(model => Model.Email)
-        @Html.TextBoxFor(model => Model.Email)
+        @Html.TextBoxFor(model => Model.Email, new { @class = "form-control" })
     </div>
     <div>
         @Html.DisplayNameFor(model => Model.Password)
-        @Html.TextBoxFor(model => Model.Password, new { @type = "password" })
+        @Html.TextBoxFor(model => Model.Password, new { @class = "form-control", @type = "password" })
     </div>
-    <button type="submit">Ingresar</button>
+    <button type="submit" class=" btn btn-primary">Ingresar</button>
 }
 

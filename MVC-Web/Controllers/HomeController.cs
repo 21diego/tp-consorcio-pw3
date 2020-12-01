@@ -65,11 +65,17 @@ namespace MVC_Web.Controllers
             {
                 return Redirect("Inicio");
             }
-            else
+            if(response.Equals("El email ya esta en uso"))
             {
-                TempData.Add("mensaje", response);
+                TempData.Add("mensajeMail", response);
                 return View("Registro");
             }
+            else
+            {
+                TempData.Add("mensajePass", response);
+                return View("Registro");
+            }
+
         }
 
         public ActionResult Salir()

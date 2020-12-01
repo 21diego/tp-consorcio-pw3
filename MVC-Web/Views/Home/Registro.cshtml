@@ -9,21 +9,21 @@
 {
 <div>
     @Html.DisplayNameFor(model => Model.Email)
-    @Html.TextBoxFor(model => Model.Email)
+    @Html.TextBoxFor(model => Model.Email, new { @class = "form-control" })
     @Html.ValidationMessageFor(Model => Model.Email)
-    <p>@TempData["mensaje"]</p>
+    <p>@TempData["mensajeMail"]</p>
 </div>
 <div>
     @Html.DisplayNameFor(model => Model.Password)
-    @Html.TextBoxFor(model => Model.Password, new { @type = "password" })
+    @Html.TextBoxFor(model => Model.Password, new { @class = "form-control", @type = "password" })
     @Html.ValidationMessageFor(Model => Model.Password)
-    <p>@TempData["mensaje"]</p>
+    <p>@TempData["mensajePass"]</p>
 </div>
     <div>
-        <label for="pass2">Repetir Password</label>
-        <input type="password" name="pass2" id="pass2"/>
+        <label for="pass2" class="mt-2">Repetir Password</label>
+        <input type="password" name="pass2" id="pass2" class = "form-control"/>
     </div>
-    <button type="submit">Registrar</button>
-    <button type="reset">Limpiar</button>
+    <button type="submit" class = " btn btn-primary">Registrar</button>
+    <button type="reset" class = " btn btn-primary">Limpiar</button>
 }
 

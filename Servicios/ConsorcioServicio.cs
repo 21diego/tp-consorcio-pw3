@@ -23,12 +23,12 @@ namespace Servicios
             return repositorio.listarConsorcios(idUsuario);
         }
 
-        public void guardarConsorcio(Consorcio consorcio)
+        public int  guardarConsorcio(Consorcio consorcio)
         {
             DateTime now = DateTime.Now;
             consorcio.FechaCreacion = now;
             consorcio.IdUsuarioCreador = (int)HttpContext.Current.Session["usuario"];
-            repositorio.guardarConsorcio(consorcio);
+            return repositorio.guardarConsorcio(consorcio);
         }
 
         public Consorcio obtenerConsorcio(int idConsorcio)

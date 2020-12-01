@@ -22,11 +22,13 @@ namespace DAL
             return context.Consorcios.Where(c=> c.IdUsuarioCreador == idUsuario).ToList();
         }
 
-        public void guardarConsorcio(Consorcio consorcio)
+        public int guardarConsorcio(Consorcio consorcio)
         {
             context.Consorcios.Add(consorcio);
             context.SaveChanges();
+            return consorcio.IdConsorcio;
         }
+
 
         public void eliminarConsorcio(Consorcio consorcio)
         {

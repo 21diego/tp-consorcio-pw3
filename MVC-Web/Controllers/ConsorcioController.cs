@@ -49,6 +49,20 @@ namespace MVC_Web.Controllers
 
             return RedirectToAction("Index");
         }
+        [HttpPost]
+        public ActionResult CrearYOtra(Consorcio consorcio)
+        {
+            servicioConsorcio.guardarConsorcio(consorcio);
+
+            return RedirectToAction("create");
+        }
+
+        public ActionResult CrearYUnidad(Consorcio consorcio)
+        {
+            int idConsorcio = servicioConsorcio.guardarConsorcio(consorcio);
+            return RedirectToAction("Crear", "Unidad", new { @idConsorcio = idConsorcio });
+        }
+
         [HttpGet]
         public ActionResult delete(int idConsorcio)
         {
