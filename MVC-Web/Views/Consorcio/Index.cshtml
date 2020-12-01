@@ -3,10 +3,13 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_UsuarioLayout.cshtml";
 }
-
-<h2>Lista de Consorcios</h2>
-<p>@Html.ActionLink("Nuevo consorcio","create","Consorcio",null,null)</p>
-<table class="table">
+<header>
+<div class="jumbotron text-center">
+    <h1 class="display-5">Lista de Consorcios</h1>
+</div>
+</header>
+<p>@Html.ActionLink("Nuevo consorcio", "create", "Consorcio", null, null)</p>
+<table class="table display">
     <tr>
         <th>Nombre</th>
         <th>Provincia</th>
@@ -25,7 +28,31 @@
             <td>@Html.ActionLink("Ver Unidades", "Lista", "Unidad", new { idConsorcio = item.IdConsorcio }, new { area = "" })</td>
             <td>@Html.ActionLink("Ver Expensas", "index", "Expensa", new { idConsorcio = item.IdConsorcio }, null)</td>
             <td>@Html.ActionLink("Ver Gastos", "lista", "Gasto", new { idConsorcio = item.IdConsorcio }, null)</td>
-            <td>@Html.ActionLink("Borrar", "delete", "Consorcio", new { idConsorcio = item.IdConsorcio }, null)</td>
+            <td>
+                @{ string idModal = "delete" + item.IdConsorcio; }
+
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#@idModal">Borrar</button>
+
+                <div class="modal fade" id=@idModal tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Consorcio: @item.Nombre</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Estas seguro que desea eliminar el consorcio @item.Nombre de la lista?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">No, cancelar</button>
+                                @Html.ActionLink("Si, estoy seguro", "delete", "Consorcio", new { idGasto = item.IdConsorcio }, new { @class = "btn btn-primary" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
         </tr>
     }
 </table>

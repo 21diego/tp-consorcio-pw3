@@ -17,9 +17,9 @@ namespace DAL
 
         }
 
-        public List<Consorcio> listarConsorcios()
+        public List<Consorcio> listarConsorcios(int idUsuario)
         {
-            return context.Consorcios.ToList();
+            return context.Consorcios.Where(c=> c.IdUsuarioCreador == idUsuario).ToList();
         }
 
         public void guardarConsorcio(Consorcio consorcio)
