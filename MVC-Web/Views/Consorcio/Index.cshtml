@@ -23,7 +23,7 @@
             <td>@Html.DisplayFor(m => item.Provincia.Nombre)</td>
             <td>@Html.DisplayFor(m => item.Ciudad)</td>
             <td>@Html.ActionLink("Ver Unidades", "Lista", "Unidad", new { idConsorcio = item.IdConsorcio }, new { area = "" })</td>
-            <td>@Html.ActionLink("Ver Expensas", "index", "Expensa", new { idConsorcio = item.IdConsorcio }, null)</td>
+            <td>@Html.ActionLink("Ver Expensas", "index", "Expensas", new { idConsorcio = item.IdConsorcio }, null)</td>
             <td>@Html.ActionLink("Ver Gastos", "lista", "Gasto", new { idConsorcio = item.IdConsorcio }, null)</td>
             <td>@Html.ActionLink("Borrar", "delete", "Consorcio", new { idConsorcio = item.IdConsorcio }, null)</td>
         </tr>

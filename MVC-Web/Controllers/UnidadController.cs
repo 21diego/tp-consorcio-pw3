@@ -55,7 +55,8 @@ namespace MVC_Web.Controllers
             ViewBag.IdConsorcio = idConsorcio;
             var consorcio = consorServi.obtenerConsorcio(idConsorcio);
             ViewBag.NombreConsorcio = consorcio.Nombre;
-            ViewBag.FechaCreacion = DateTime.Now.ToString();
+            u.FechaCreacion = DateTime.Now;
+            u.IdUsuarioCreador = Servicios.Helper.SessionHelper.ObtenerUsuarioEnSesion();
 
             if (!ModelState.IsValid)
             {
@@ -74,7 +75,9 @@ namespace MVC_Web.Controllers
             ViewBag.IdConsorcio = idConsorcio;
             var consorcio = consorServi.obtenerConsorcio(idConsorcio);
             ViewBag.NombreConsorcio = consorcio.Nombre;
-            ViewBag.FechaCreacion = DateTime.Now.ToString();
+
+            u.FechaCreacion = DateTime.Now;
+            u.IdUsuarioCreador = Servicios.Helper.SessionHelper.ObtenerUsuarioEnSesion();
 
             if (!ModelState.IsValid)
             {

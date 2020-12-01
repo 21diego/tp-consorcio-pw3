@@ -39,7 +39,7 @@
 <div>
     <p>@ViewBag.cantidadUnidades Unidades</p>
     <a>@Html.ActionLink("Ver Unidades", "lista", "Unidad", new { @id = Model.IdConsorcio }, null)</a>
-    <a>@Html.ActionLink("Ver Expensas", "Index", "Expensa", null)</a>
+    <a>@Html.ActionLink("Ver Expensas", "Index", "Expensas", null)</a>
     <a>@Html.ActionLink("Ver Gastos", "Lista", "Gasto", new { @idConsorcio = Model.IdConsorcio }, null)</a>
     <button>@Html.ActionLink("Eliminar Consorcio", "delete", "Consorcio", new { @id = Model.IdConsorcio }, null)</button>
 </div>

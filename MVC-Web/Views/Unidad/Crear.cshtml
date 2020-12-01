@@ -103,15 +103,9 @@
                         @Html.ValidationMessageFor(Model => Model.Superficie)
                         <input type="text" class="form-control" id="Superficie" name="Superficie" placeholder="Superficie">
                     </div>
-                    <div class="d-none">
-                        <input type="datetime-local" class="form-control" id="FechaCreacion" name="FechaCreacion" value="@ViewBag.FechaCreacion">
-                    </div>
-                    <div class="d-none">
-                        <input type="text" class="form-control" id="IdUsuarioCreador" name="IdUsuarioCreador" value="1">
-                    </div>
 
                     <button type="submit" class="btn btn-primary">Guardar</button>
-                    <button type="submit" formaction="/Unidad/CrearYOtra/@ViewBag.IdConsorcio" class="btn btn-primary" >Guardar y Crear Otra Unidad</button>
+                    <button type="submit" formaction="/Unidad/CrearYOtra?idConsorcio=@ViewBag.IdConsorcio" class="btn btn-primary" >Guardar y Crear Otra Unidad</button>
                     <a href="/Unidad/Lista/@ViewBag.IdConsorcio" class="btn btn-primary">Cancelar</a>
                 </fieldset>
             </form>

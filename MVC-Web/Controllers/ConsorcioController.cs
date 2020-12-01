@@ -55,7 +55,7 @@ namespace MVC_Web.Controllers
 
             servicioConsorcio.eliminarConsorcio(idConsorcio);
 
-            return Redirect("Index");
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
