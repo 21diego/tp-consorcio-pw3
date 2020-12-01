@@ -23,7 +23,7 @@ namespace MVC_Web.Controllers
             servicioProvincia = new ProvinciaServicio(context);
         }
 
-        // GET: Consorcio
+        [HttpGet]
         public ActionResult Index()
         {
             // nostrar lista consorcios
@@ -47,7 +47,7 @@ namespace MVC_Web.Controllers
 
             servicioConsorcio.guardarConsorcio(consorcio);
 
-            return Redirect("Index");
+            return RedirectToAction("Index");
         }
         [HttpGet]
         public ActionResult delete(int idConsorcio)
@@ -79,7 +79,7 @@ namespace MVC_Web.Controllers
         {
             servicioConsorcio.editarConsorcio(consorcio);
 
-            return Redirect("Index");
+            return RedirectToAction("Index");
         }
     }
 }
