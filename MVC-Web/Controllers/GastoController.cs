@@ -54,7 +54,7 @@ namespace MVC_Web.Controllers
             if (Request.Files.Count > 0 && Request.Files[0].ContentLength > 0)
             {
                 var comprobante = Request.Files[0];
-                gasto.ArchivoComprobante = "/Gastos/" + comprobante.FileName;
+                gasto.ArchivoComprobante = "/Gastos/" + comprobante.FileName + DateTime.Now.ToString("yyyyMMddHHmmssffff");
                 comprobante.SaveAs(Server.MapPath(string.Concat("~", gasto.ArchivoComprobante)));
             }
                 
