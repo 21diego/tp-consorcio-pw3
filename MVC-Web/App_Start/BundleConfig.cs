@@ -33,10 +33,7 @@ namespace MVC_Web
                       "~/css/main.css"));
 
             bundles.Add(new ScriptBundle("~/js").Include(
-            "~/js/tabla-paginacion.js",
-            "~/js/bootstrap-notify.min.js",
-            "~/js/notificacion.js"
-            ));
+            "~/js/tabla-paginacion.js"));
 
             bundles.Add(new ScriptBundle("~/js/DataTables/js").Include(
                         "~/js/DataTables/js/data*"));
