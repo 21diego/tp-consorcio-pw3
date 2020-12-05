@@ -27,6 +27,12 @@ namespace MVC_Web.Controllers
         public ActionResult Index()
         {
             // nostrar lista consorcios
+            if(TempData["Mensaje"] != null)
+            {
+                TempData["Mensaje"] = TempData["Mensaje"];
+                TempData["Error"] = TempData["ErrorMsg"];
+            }
+
             List<Consorcio> consorcios = servicioConsorcio.listarConsorcios();
 
             return View("Index", consorcios);

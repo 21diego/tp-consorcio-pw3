@@ -2,6 +2,7 @@
 @{
     Layout = "~/Views/Shared/_BaseLayout.cshtml";
     var mensaje = TempData["Mensaje"];
+    var error = TempData["Error"];
 }
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/js/DataTables/js")
@@ -9,8 +10,15 @@
 @RenderSection("scripts", required: false)
 <script type="text/javascript">
     var mensaje = '@mensaje';
+    var error = '@error';
     if (mensaje) {
-        alertify.success(mensaje);
+        if (error) {
+            alertify.error(mensaje);
+        }
+        else {
+            alertify.success(mensaje);
+        }
+        
     }    
 </script>
 <div class="container">

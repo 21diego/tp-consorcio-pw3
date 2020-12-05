@@ -34,3 +34,19 @@ section .pagination li{
 .validation-summary-valid {
     display: none;
 } 
+
+/* FOOTER */
+#footer {
+    background: #eb6864;
+    height: 3em;
+    border-top-right-radius: 0.3em;
+    border-top-left-radius: 0.3em;
+}
+
+#footer > p {
+    font-size: 1.2em;
+    color: white;
+    font-weight: bold;
+    margin: 0.5em;
+    font-family: "News Cycle", "Arial Narrow Bold", sans-serif;
+}

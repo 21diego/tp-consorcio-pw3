@@ -46,6 +46,13 @@ namespace MVC_Web.Controllers
                     {
                         string responseBody = objReader.ReadToEnd();
                         var result = JsonConvert.DeserializeObject<List<ExpensasDTO>>(responseBody);
+                        if(result.Count == 0)
+                        {
+                            TempData["Mensaje"] = "No hay expensas disponibles";
+                            TempData["ErrorMsg"] = "1";
+                            return RedirectToAction("Index","Consorcio");
+                        }
+                        
                         ViewBag.expensasMesActual = result.First();
                         return View(result);
                     }

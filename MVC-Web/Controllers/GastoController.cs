@@ -116,6 +116,12 @@ namespace MVC_Web.Controllers
                 return RedirectToAction("Index", "Consorcio");
             }
             string rutaComprobante = GastoServ.obtenerGasto(idGasto).ArchivoComprobante;
+
+            TempData["Mensaje"] = "El gasto no existe";
+            if (rutaComprobante == null)
+            {
+                return RedirectToAction("Index");
+            }
             string filename = "File.pdf";
             string filepath = AppDomain.CurrentDomain.BaseDirectory + rutaComprobante;
             byte[] filedata = System.IO.File.ReadAllBytes(filepath);
