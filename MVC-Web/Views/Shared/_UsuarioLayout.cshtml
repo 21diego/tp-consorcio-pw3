@@ -1,11 +1,18 @@
 ﻿
 @{
     Layout = "~/Views/Shared/_BaseLayout.cshtml";
+    var mensaje = TempData["Mensaje"];
 }
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/js/DataTables/js")
 @Styles.Render("~/js/DataTables/css")
 @RenderSection("scripts", required: false)
+<script type="text/javascript">
+    var mensaje = '@mensaje';
+    if (mensaje) {
+        alertify.success(mensaje);
+    }    
+</script>
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         @Html.ActionLink("S.A.C", "Index", "Consorcio", new { area = "" }, new { @class = "navbar-brand" })

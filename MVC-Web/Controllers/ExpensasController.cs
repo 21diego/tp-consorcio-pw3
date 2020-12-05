@@ -16,11 +16,12 @@ namespace MVC_Web.Controllers
     public class ExpensasController : Controller
     {
         ConsorcioServicio ConsorcioServ;
+        Breadcrumb bc = new Breadcrumb();
 
         public ExpensasController()
         {
-            ConsorcioCtx ctx = new ConsorcioCtx();
-            ConsorcioServ = new ConsorcioServicio(ctx);
+            ConsorcioCtx context = new ConsorcioCtx();
+            ConsorcioServ = new ConsorcioServicio(context);
         }
 
         // GET: Expensas
@@ -35,7 +36,7 @@ namespace MVC_Web.Controllers
             request.Method = "GET";
             request.ContentType = "application/json";
             request.Accept = "application/json";
-
+            bc.SetConsorcioBreadcrumbTitle(IdConsorcio, ConsorcioServ);
             using (WebResponse response = request.GetResponse())
             {
                 using (Stream strReader = response.GetResponseStream())

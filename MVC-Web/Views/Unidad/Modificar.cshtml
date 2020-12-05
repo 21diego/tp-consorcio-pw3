@@ -28,11 +28,9 @@
                     <div class="d-none">
                         <input type="text" class="form-control" id="IdUnidad" name="IdUnidad" value="@Model.IdUnidad">
                     </div>
-                    <div class="form-group row">
-                        <label for="staticConsorcio" class="col-sm-2 col-form-label">Consorcio</label>
-                        <div class="col-sm-10">
-                            <input type="text" readonly="" class="form-control-plaintext" id="staticConsorcio" value="@ViewBag.NombreConsorcio">
-                        </div>
+                    <div class="form-group">
+                        <label for="staticConsorcio">Consorcio</label>
+                        <input type="text" readonly="" class="form-control" id="staticConsorcio" name="staticConsorcio" value="@ViewBag.NombreConsorcio">
                     </div>
                     <div class="form-group">
                         <label for="Nombre">Nombre (*)</label>
@@ -55,15 +53,9 @@
                         <input type="email" class="form-control" id="EmailPropietario" name="EmailPropietario" aria-describedby="emailHelp" value="@Model.EmailPropietario">
                     </div>
                     <div class="form-group">
-                        <label for="Superficie">Superficie (*)</label>
+                        <label for="Superficie">Superficie</label>
                         @Html.ValidationMessageFor(Model => Model.Superficie)
                         <input type="text" class="form-control" id="Superficie" name="Superficie" value="@Model.Superficie">
-                    </div>
-                    <div class="d-none">
-                        <input type="datetime-local" class="form-control" id="FechaCreacion" name="FechaCreacion" value="@Model.FechaCreacion">
-                    </div>
-                    <div class="d-none">
-                        <input type="text" class="form-control" id="IdUsuarioCreador" name="IdUsuarioCreador" value="1">
                     </div>
 
                     <button type="submit" class="btn btn-primary">Guardar</button>
