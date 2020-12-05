@@ -66,6 +66,10 @@ namespace MVC_Web.Controllers
         [HttpGet]
         public ActionResult delete(int idConsorcio)
         {
+            if (servicioConsorcio.perteneceAUsuarioConectado(idConsorcio) == false)
+            {
+                return RedirectToAction("Index");
+            }
 
             servicioConsorcio.eliminarConsorcio(idConsorcio);
 
@@ -76,6 +80,10 @@ namespace MVC_Web.Controllers
         [SiteMapTitle("title")]
         public ActionResult update(int idConsorcio)
         {
+            if (servicioConsorcio.perteneceAUsuarioConectado(idConsorcio) == false)
+            {
+                return RedirectToAction("Index");
+            }
             Consorcio consorcio = servicioConsorcio.obtenerConsorcio(idConsorcio);
             List<Provincia> provincias = servicioProvincia.listarProvincias();
             int cantidadUnidades = servicioConsorcio.cantidadUnidadesConsorcio(consorcio);

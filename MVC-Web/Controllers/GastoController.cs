@@ -28,7 +28,11 @@ namespace MVC_Web.Controllers
         // GET: Gasto/Lista/idConsorcio
         public ActionResult Lista(int? idConsorcio)
         {
-            if(idConsorcio == null)
+            if (ConsorcioServ.perteneceAUsuarioConectado((int)idConsorcio) == false)
+            {
+                return RedirectToAction("Index", "Consorcio");
+            }
+            if (idConsorcio == null)
             {
                 return View("~/Views/Shared/Error.cshtml");
             }
@@ -43,6 +47,10 @@ namespace MVC_Web.Controllers
         [HttpGet]
         public ActionResult Create(int idConsorcio)
         {
+            if (ConsorcioServ.perteneceAUsuarioConectado(idConsorcio) == false)
+            {
+                return RedirectToAction("Index", "Consorcio");
+            }
             ViewBag.consorcio = ConsorcioServ.obtenerConsorcio(idConsorcio);
             ViewBag.tiposGastos = GastoServ.ObtenerTiposGastos();
             return View();
@@ -67,6 +75,10 @@ namespace MVC_Web.Controllers
         [HttpGet]
         public ActionResult Update(int idGasto)
         {
+            if (GastoServ.perteneceAUsuarioConectado(idGasto) == false)
+            {
+                return RedirectToAction("Index", "Consorcio");
+            }
             Gasto gasto = GastoServ.obtenerGasto(idGasto);
             ViewBag.consorcio = ConsorcioServ.obtenerConsorcio(gasto.IdConsorcio);
             ViewBag.tiposGastos = GastoServ.ObtenerTiposGastos();
@@ -92,12 +104,20 @@ namespace MVC_Web.Controllers
         [HttpGet]
         public ActionResult VerComprobante(int idGasto)
         {
+            if (GastoServ.perteneceAUsuarioConectado(idGasto) == false)
+            {
+                return RedirectToAction("Index", "Consorcio");
+            }
             string rutaComprobante = GastoServ.obtenerGasto(idGasto).ArchivoComprobante;
             return Redirect("~/"+rutaComprobante);
         }
 
         public ActionResult EliminarGasto(int idGasto)
         {
+            if (GastoServ.perteneceAUsuarioConectado(idGasto) == false)
+            {
+                return RedirectToAction("Index", "Consorcio");
+            }
             Gasto gasto = GastoServ.obtenerGasto(idGasto);
             var archivo = Server.MapPath(string.Concat("~", gasto.ArchivoComprobante));
             int idConsorcio = GastoServ.eliminarGasto(gasto, archivo);
