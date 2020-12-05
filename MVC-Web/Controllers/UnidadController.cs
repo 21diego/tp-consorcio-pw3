@@ -29,6 +29,11 @@ namespace MVC_Web.Controllers
 
         public ActionResult Lista(int idConsorcio)
         {
+            if (consorServi.perteneceAUsuarioConectado(idConsorcio) == false)
+            {
+                return RedirectToAction("Index", "Consorcio");
+            }
+
             ViewBag.IdConsorcio = idConsorcio;
 
             List<Unidad> unidades = uniServi.ObtenerTodosPorId(idConsorcio);
@@ -39,6 +44,10 @@ namespace MVC_Web.Controllers
 
         public ActionResult Crear(int idConsorcio)
         {
+            if (consorServi.perteneceAUsuarioConectado(idConsorcio) == false)
+            {
+                return RedirectToAction("Index", "Consorcio");
+            }
             ViewBag.IdConsorcio = idConsorcio;
             
             var consorcio = consorServi.obtenerConsorcio(idConsorcio);
@@ -96,6 +105,10 @@ namespace MVC_Web.Controllers
 
         public ActionResult Modificar(int idConsorcio, int idUnidad)
         {
+            if (uniServi.perteneceAUsuarioConectado(idUnidad) == false)
+            {
+                return RedirectToAction("Index", "Consorcio");
+            }
             Unidad u = uniServi.ObtenerPorId(idUnidad);
             var consorcio = consorServi.obtenerConsorcio(idConsorcio);
             ViewBag.NombreConsorcio = consorcio.Nombre;
@@ -120,6 +133,10 @@ namespace MVC_Web.Controllers
 
         public ActionResult Eliminar(int idConsorcio, int idUnidad)
         {
+            if (uniServi.perteneceAUsuarioConectado(idUnidad) == false)
+            {
+                return RedirectToAction("Index", "Consorcio");
+            }
             Unidad u = uniServi.ObtenerPorId(idUnidad);
 
             ViewBag.IdConsorcio = u.IdConsorcio;

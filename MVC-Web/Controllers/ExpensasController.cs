@@ -23,9 +23,14 @@ namespace MVC_Web.Controllers
             ConsorcioCtx context = new ConsorcioCtx();
             ConsorcioServ = new ConsorcioServicio(context);
         }
+
         // GET: Expensas
         public ActionResult Index(int IdConsorcio)
         {
+            if (ConsorcioServ.perteneceAUsuarioConectado(IdConsorcio) == false)
+            {
+                return RedirectToAction("Index", "Consorcio");
+            }
             var url = "https://localhost:44375/api/Expensas?idConsorcio=" + IdConsorcio;
             var request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "GET";

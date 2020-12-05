@@ -69,5 +69,19 @@ namespace Servicios
         {
             return repositorio.cantidadUnidadesConsorcio(consorcio);
         }
+
+        public Boolean perteneceAUsuarioConectado(int idConsorcio)
+        {
+            Consorcio consorcioObtenido = repositorio.obtenerConsorcio(idConsorcio);
+            if(consorcioObtenido != null)
+            {
+                int idUsuario = (int)HttpContext.Current.Session["usuario"];
+                if(consorcioObtenido.IdUsuarioCreador == idUsuario)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }
