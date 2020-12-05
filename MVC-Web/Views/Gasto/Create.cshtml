@@ -17,7 +17,7 @@
                 @Html.TextBox("IdConsorcio", (int)ViewBag.consorcio.IdConsorcio, new { @type = "hidden" })
             </div>
             <div>
-                @Html.DisplayName("TipoGasto")
+                @Html.DisplayName("Tipo Gasto")
                 @Html.DropDownListFor(model => Model.IdTipoGasto, new SelectList(ViewBag.tiposGastos, "IdTipoGasto", "Nombre"), "Seleccione un tipo de gasto", new { @class = "form-control" })
                 @Html.ValidationMessageFor(Model => Model.IdTipoGasto)
             </div>

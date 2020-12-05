@@ -14,7 +14,8 @@
           <mvcSiteMapNode title="Eliminar Unidad" controller="Unidad" action="Eliminar" preservedRouteParameters="idConsorcio, idUnidad"/>
         </mvcSiteMapNode>
         <mvcSiteMapNode title="Gastos" controller="Gasto" action="Lista" preservedRouteParameters="idConsorcio"/>
-        <mvcSiteMapNode title="Expensas" controller="Expensa" action="Index" preservedRouteParameters="idConsorcio"/>
+        <mvcSiteMapNode title="Gastos" controller="Gasto" action="Update" preservedRouteParameters="idConsorcio"/>
+        <mvcSiteMapNode title="Expensas" controller="Expensas" action="Index" preservedRouteParameters="idConsorcio"/>
       </mvcSiteMapNode>
     </mvcSiteMapNode>
   </mvcSiteMapNode>

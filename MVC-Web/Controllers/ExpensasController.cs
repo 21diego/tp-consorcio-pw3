@@ -1,6 +1,7 @@
 ﻿using DAL;
 using MVC_Web.Tags;
 using Newtonsoft.Json;
+using Servicios;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,6 +15,14 @@ namespace MVC_Web.Controllers
     [Autenticado]
     public class ExpensasController : Controller
     {
+        ConsorcioServicio ConsorcioServ;
+        Breadcrumb bc = new Breadcrumb();
+
+        public ExpensasController()
+        {
+            ConsorcioCtx context = new ConsorcioCtx();
+            ConsorcioServ = new ConsorcioServicio(context);
+        }
         // GET: Expensas
         public ActionResult Index(int IdConsorcio)
         {
@@ -22,7 +31,7 @@ namespace MVC_Web.Controllers
             request.Method = "GET";
             request.ContentType = "application/json";
             request.Accept = "application/json";
-
+            bc.SetConsorcioBreadcrumbTitle(IdConsorcio, ConsorcioServ);
             using (WebResponse response = request.GetResponse())
             {
                 using (Stream strReader = response.GetResponseStream())

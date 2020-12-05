@@ -8,7 +8,7 @@
     <h1 class="display-5">Lista de Gastos - @ViewBag.consorcio.Nombre</h1>
 </div>
 </header>
-<p>@Html.ActionLink("Nuevo gasto", "create", "Gasto", new { idConsorcio = ViewBag.consorcio.IdConsorcio }, new { @class = "btn-sm btn-info" })</p>
+<p>@Html.ActionLink("Nuevo gasto", "create", "Gasto", new { idConsorcio = ViewBag.consorcio.IdConsorcio }, new { @class = "btn btn-primary" })</p>
 <table class="table">
     <tr>
         <th>Año</th>
@@ -49,7 +49,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">No, cancelar</button>
-                                @Html.ActionLink("Si, estoy seguro", "EliminarGasto", "Gasto", new { idGasto = item.IdGasto }, new { @class = "btn btn-primary" })
+                                @Html.ActionLink("Si, estoy seguro", "EliminarGasto", "Gasto", new { idGasto = item.IdGasto }, new { @class = "btn btn-primary eliminarGasto" })
                             </div>
                         </div>
                     </div>
