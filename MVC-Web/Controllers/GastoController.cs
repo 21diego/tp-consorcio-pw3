@@ -95,7 +95,20 @@ namespace MVC_Web.Controllers
         public ActionResult VerComprobante(int idGasto)
         {
             string rutaComprobante = GastoServ.obtenerGasto(idGasto).ArchivoComprobante;
-            return Redirect("~/"+rutaComprobante);
+            string filename = "File.pdf";
+            string filepath = AppDomain.CurrentDomain.BaseDirectory + rutaComprobante;
+            byte[] filedata = System.IO.File.ReadAllBytes(filepath);
+            string contentType = MimeMapping.GetMimeMapping(filepath);
+
+            var cd = new System.Net.Mime.ContentDisposition
+            {
+                FileName = filename,
+                Inline = true,
+            };
+
+            Response.AppendHeader("Content-Disposition", cd.ToString());
+
+            return File(filedata, contentType);
         }
 
         public ActionResult EliminarGasto(int idGasto)
