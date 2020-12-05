@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    $('#listaUnidades').DataTable({
+    $('#listaTabla').DataTable({
         "info": false,
         "searching": false,
         "language": {
