@@ -64,7 +64,9 @@ namespace MVC_Web.Controllers
             if (Request.Files.Count > 0 && Request.Files[0].ContentLength > 0)
             {
                 var comprobante = Request.Files[0];
-                gasto.ArchivoComprobante = "/Gastos/" + comprobante.FileName + DateTime.Now.ToString("yyyyMMddHHmmssffff");
+                var nombre = comprobante.FileName.Split('.')[0];
+                var extension = comprobante.FileName.Split('.')[1];
+                gasto.ArchivoComprobante = "/Gastos/" + nombre + DateTime.Now.ToString("yyyyMMddHHmmssffff") + '.' + extension;
                 comprobante.SaveAs(Server.MapPath(string.Concat("~", gasto.ArchivoComprobante)));
             }
                 
@@ -114,7 +116,20 @@ namespace MVC_Web.Controllers
                 return RedirectToAction("Index", "Consorcio");
             }
             string rutaComprobante = GastoServ.obtenerGasto(idGasto).ArchivoComprobante;
-            return Redirect("~/"+rutaComprobante);
+            string filename = "File.pdf";
+            string filepath = AppDomain.CurrentDomain.BaseDirectory + rutaComprobante;
+            byte[] filedata = System.IO.File.ReadAllBytes(filepath);
+            string contentType = MimeMapping.GetMimeMapping(filepath);
+
+            var cd = new System.Net.Mime.ContentDisposition
+            {
+                FileName = filename,
+                Inline = true,
+            };
+
+            Response.AppendHeader("Content-Disposition", cd.ToString());
+
+            return File(filedata, contentType);
         }
 
         public ActionResult EliminarGasto(int idGasto)
