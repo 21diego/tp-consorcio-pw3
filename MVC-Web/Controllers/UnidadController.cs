@@ -22,21 +22,32 @@ namespace MVC_Web.Controllers
             ConsorcioCtx ctx = new ConsorcioCtx();
             uniServi = new UnidadServicio(ctx);
             consorServi = new ConsorcioServicio(ctx);
+            
         }
 
+        Breadcrumb bc = new Breadcrumb();
 
         public ActionResult Lista(int idConsorcio)
         {
+            if (consorServi.perteneceAUsuarioConectado(idConsorcio) == false)
+            {
+                return RedirectToAction("Index", "Consorcio");
+            }
+
             ViewBag.IdConsorcio = idConsorcio;
 
             List<Unidad> unidades = uniServi.ObtenerTodosPorId(idConsorcio);
 
-            SetConsorcioBreadcrumbTitle(idConsorcio);
+            bc.SetConsorcioBreadcrumbTitle(idConsorcio, consorServi);
             return View(unidades);
         }
 
         public ActionResult Crear(int idConsorcio)
         {
+            if (consorServi.perteneceAUsuarioConectado(idConsorcio) == false)
+            {
+                return RedirectToAction("Index", "Consorcio");
+            }
             ViewBag.IdConsorcio = idConsorcio;
             
             var consorcio = consorServi.obtenerConsorcio(idConsorcio);
@@ -44,7 +55,7 @@ namespace MVC_Web.Controllers
 
             ViewBag.FechaCreacion = DateTime.Now.ToString();
 
-            SetConsorcioBreadcrumbTitle(idConsorcio);
+            bc.SetConsorcioBreadcrumbTitle(idConsorcio, consorServi);
 
             return View();
         }
@@ -60,10 +71,11 @@ namespace MVC_Web.Controllers
 
             if (!ModelState.IsValid)
             {
-                SetConsorcioBreadcrumbTitle(idConsorcio);
+                bc.SetConsorcioBreadcrumbTitle(idConsorcio, consorServi);
                 return View();
                 //return Redirect("/Unidad/Crear/" + u.IdConsorcio);
             }
+            TempData["Mensaje"] = "Unidad " + u.Nombre + " creada con éxito";
             uniServi.Crear(u);
             return Redirect("/Unidad/Lista/" + idConsorcio);
             
@@ -81,11 +93,11 @@ namespace MVC_Web.Controllers
 
             if (!ModelState.IsValid)
             {
-                SetConsorcioBreadcrumbTitle(idConsorcio);
+                bc.SetConsorcioBreadcrumbTitle(idConsorcio,consorServi);
                 return View("Crear");
                 //return Redirect("/Unidad/Crear/" + Id);
             }
-            TempData["SuccessMsg"] = "Unidad " + u.Nombre + " creada con éxito";
+            TempData["Mensaje"] = "Unidad " + u.Nombre + " creada con éxito";
             uniServi.Crear(u);
             return Redirect("/Unidad/Crear/" + idConsorcio);
 
@@ -93,11 +105,15 @@ namespace MVC_Web.Controllers
 
         public ActionResult Modificar(int idConsorcio, int idUnidad)
         {
+            if (uniServi.perteneceAUsuarioConectado(idUnidad) == false)
+            {
+                return RedirectToAction("Index", "Consorcio");
+            }
             Unidad u = uniServi.ObtenerPorId(idUnidad);
             var consorcio = consorServi.obtenerConsorcio(idConsorcio);
             ViewBag.NombreConsorcio = consorcio.Nombre;
 
-            SetConsorcioBreadcrumbTitle(u.IdConsorcio);
+            bc.SetConsorcioBreadcrumbTitle(u.IdConsorcio, consorServi);
 
             return View(u);
         }
@@ -111,19 +127,23 @@ namespace MVC_Web.Controllers
             }
             
             uniServi.Modificar(u);
-
+            TempData["Mensaje"] = "Unidad " + u.Nombre + " modificada con éxito";
             return Redirect("/unidad/lista/"+u.IdConsorcio);
         }
 
         public ActionResult Eliminar(int idConsorcio, int idUnidad)
         {
+            if (uniServi.perteneceAUsuarioConectado(idUnidad) == false)
+            {
+                return RedirectToAction("Index", "Consorcio");
+            }
             Unidad u = uniServi.ObtenerPorId(idUnidad);
 
             ViewBag.IdConsorcio = u.IdConsorcio;
             var consorcio = consorServi.obtenerConsorcio(u.IdConsorcio);
-            ViewBag.NombreConsorcio = consorcio.Nombre;  
-
-            SetConsorcioBreadcrumbTitle(u.IdConsorcio);
+            ViewBag.NombreConsorcio = consorcio.Nombre;
+      
+            bc.SetConsorcioBreadcrumbTitle(u.IdConsorcio, consorServi);
 
             return View(u);
         }
@@ -132,31 +152,9 @@ namespace MVC_Web.Controllers
         public ActionResult Eliminar(Unidad u)
         {
             int IdConsorcio = u.IdConsorcio;
+            TempData["Mensaje"] = "Unidad " + u.Nombre + " eliminada con éxito";
             uniServi.Eliminar(u.IdUnidad);
             return Redirect("/Unidad/Lista/"+IdConsorcio);
-        }
-
-        private void SetConsorcioBreadcrumbTitle(int idConsorcio)
-        {
-            var consorcio = consorServi.obtenerConsorcio(idConsorcio);
-            string NombreConsorcio = consorcio.Nombre;
-            var node = SiteMaps.Current.CurrentNode;
-            FindParentNode(node, "ConsorcioX", $"Consorcio \"{NombreConsorcio}\"");
-        }
-
-        private static void FindParentNode(ISiteMapNode node, string oldTitle, string newTitle)
-        {
-            if (node.Title == oldTitle)
-            {
-                node.Title = newTitle;
-            }
-            else
-            {
-                if (node.ParentNode != null)
-                {
-                    FindParentNode(node.ParentNode, oldTitle, newTitle);
-                }
-            }
         }
     }
 }

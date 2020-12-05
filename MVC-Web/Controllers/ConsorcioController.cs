@@ -46,6 +46,7 @@ namespace MVC_Web.Controllers
         {
 
             servicioConsorcio.guardarConsorcio(consorcio);
+            TempData["Mensaje"] = "Consorcio " + consorcio.Nombre + " creado con éxito";
 
             return RedirectToAction("Index");
         }
@@ -53,22 +54,27 @@ namespace MVC_Web.Controllers
         public ActionResult CrearYOtra(Consorcio consorcio)
         {
             servicioConsorcio.guardarConsorcio(consorcio);
-
+            TempData["Mensaje"] = "Consorcio " + consorcio.Nombre + " creado con éxito";
             return RedirectToAction("create");
         }
 
         public ActionResult CrearYUnidad(Consorcio consorcio)
         {
             int idConsorcio = servicioConsorcio.guardarConsorcio(consorcio);
+            TempData["Mensaje"] = "Consorcio " + consorcio.Nombre + " creado con éxito";
             return RedirectToAction("Crear", "Unidad", new { @idConsorcio = idConsorcio });
         }
 
         [HttpGet]
         public ActionResult delete(int idConsorcio)
         {
+            if (servicioConsorcio.perteneceAUsuarioConectado(idConsorcio) == false)
+            {
+                return RedirectToAction("Index");
+            }
 
             servicioConsorcio.eliminarConsorcio(idConsorcio);
-
+            TempData["Mensaje"] = "Consorcio eliminado con éxito";
             return RedirectToAction("Index");
         }
 
@@ -76,6 +82,10 @@ namespace MVC_Web.Controllers
         [SiteMapTitle("title")]
         public ActionResult update(int idConsorcio)
         {
+            if (servicioConsorcio.perteneceAUsuarioConectado(idConsorcio) == false)
+            {
+                return RedirectToAction("Index");
+            }
             Consorcio consorcio = servicioConsorcio.obtenerConsorcio(idConsorcio);
             List<Provincia> provincias = servicioProvincia.listarProvincias();
             int cantidadUnidades = servicioConsorcio.cantidadUnidadesConsorcio(consorcio);
@@ -92,6 +102,7 @@ namespace MVC_Web.Controllers
         public ActionResult update(Consorcio consorcio)
         {
             servicioConsorcio.editarConsorcio(consorcio);
+            TempData["Mensaje"] = "Consorcio " + consorcio.Nombre + " modificado con éxito";
 
             return RedirectToAction("Index");
         }

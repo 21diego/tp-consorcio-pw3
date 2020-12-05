@@ -91,28 +91,6 @@ namespace MVC_Web.Controllers
         {
             ViewData["Title"] = "Consorcio \"Villanova\"";
             return View();
-        }
-
-        private static void SetConsorcioBreadcrumbTitle()
-        {
-            string nombreConsorcio = "Villanova";
-            var node = SiteMaps.Current.CurrentNode;
-            FindParentNode(node, "ConsorcioX", $"Consorcio \"{nombreConsorcio}\"");
-        }
-
-        private static void FindParentNode(ISiteMapNode node, string oldTitle, string newTitle)
-        {
-            if (node.Title == oldTitle)
-            {
-                node.Title = newTitle;
-            }
-            else
-            {
-                if (node.ParentNode != null)
-                {
-                    FindParentNode(node.ParentNode, oldTitle, newTitle);
-                }
-            }
-        }
+        }     
     }
 }

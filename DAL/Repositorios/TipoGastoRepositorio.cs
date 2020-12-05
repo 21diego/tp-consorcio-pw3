@@ -17,7 +17,10 @@ namespace DAL.Repositorios
         }
         public List<TipoGasto> ObtenerTiposGastos()
         {
-            return context.TipoGastoes.ToList();
+            var gastos = (from g in context.TipoGastoes
+                                 orderby g.Nombre
+                                 select g).ToList();         
+            return gastos;
         }
     }
 }

@@ -12,11 +12,13 @@ namespace Servicios
     {
         DAL.Repositorios.GastoRepositorio repositorio;
         DAL.Repositorios.TipoGastoRepositorio TGRepo;
+        DAL.ConsorcioRepositorio CRepo;
 
         public GastoServicio(ConsorcioCtx contexto)
         {
             repositorio = new DAL.Repositorios.GastoRepositorio(contexto);
             TGRepo = new DAL.Repositorios.TipoGastoRepositorio(contexto);
+            CRepo = new DAL.ConsorcioRepositorio(contexto);
         }
         public List<TipoGasto> ObtenerTiposGastos()
         {
@@ -57,6 +59,21 @@ namespace Servicios
         public void editarGasto(Gasto gasto)
         {
             repositorio.editarGasto(gasto);
+        }
+
+        public Boolean perteneceAUsuarioConectado(int idGasto)
+        {
+            Gasto gastoObtenido = repositorio.obtenerGasto(idGasto);
+            if (gastoObtenido != null)
+            {
+                Consorcio consorcioObtenido = CRepo.obtenerConsorcio(gastoObtenido.IdConsorcio);
+                int idUsuario = (int)HttpContext.Current.Session["usuario"];
+                if (consorcioObtenido.IdUsuarioCreador == idUsuario)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 

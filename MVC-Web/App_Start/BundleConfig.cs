@@ -22,17 +22,18 @@ namespace MVC_Web
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
 
-            //bundles.Add(new StyleBundle("~/Content/css").Include(
-                      //"~/Content/bootstrap.css"));
-                     //"~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/Content/alertifyjs").Include(
+                      "~/Content/alertifyjs/alertify.min.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/alertify").Include(
+                      "~/Scripts/alertify.min.js"));
 
             bundles.Add(new StyleBundle("~/css").Include(
                       "~/css/bootstrap.min.css",
                       "~/css/main.css"));
 
             bundles.Add(new ScriptBundle("~/js").Include(
-            "~/js/tabla-paginacion.js",
-            "~/js/bootstrap-notify.min.js"));
+            "~/js/tabla-paginacion.js"));
 
             bundles.Add(new ScriptBundle("~/js/DataTables/js").Include(
                         "~/js/DataTables/js/data*"));
